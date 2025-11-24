@@ -16,43 +16,44 @@
   <body>
     <div class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
       <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3">
-          <div class="flex items-center gap-4 text-[#0e141b]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_6_319)">
-                  <path
-                    d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-                </defs>
-              </svg>
-            </div>
-            <a href="index.html">
-            <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">Dr. C.H.Patil</h2></a>
+        <!-- Fixed Top Header with Animated Background -->
+      <header class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg">
+        <div class="flex items-center gap-4 text-[#0e141b] group">
+          <div class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_6_319)">
+                <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+              </defs>
+            </svg>
           </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="about.html">About</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="patentsAndCopyrights.html">Patents/Copyrights</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="conference.html">Conference</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="publications.html">Publications</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="skills.html">Skills</a>
-              <a class="text-[#0e141b] text-sm font-medium leading-normal" href="contact.html">Contact</a>
-            </div>
-            <a href="resume.pdf" target="_blank" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#1980e6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
-              <span class="truncate">Resume</span>
-            </a>
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style='background-image: url("1516640279911.jpeg");'>
-            </div>
+          <a href="index.html" class="transition-transform duration-300 ease-in-out hover:scale-105">
+            <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">
+              Dr. C.H.Patil
+            </h2>
+          </a>
+        </div>
+
+        <div class="flex flex-1 justify-end gap-8 items-center">
+          <div class="flex items-center gap-9">
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="about.html">About</a>
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="patentsAndCopyrights.html">Patents/Copyrights</a>
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="conference.html">Conference</a>
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="publications.html">Publications</a>
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="skills.html">Skills</a>
+            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="contact.html">Contact</a>
           </div>
-        </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
+
+          <a href="resume.pdf" target="_blank" class="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md">
+            <span class="truncate">Resume</span>
+          </a>
+
+          <div class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2" style="background-image: url('1516640279911.jpeg')"></div>
+        </div>
+      </header>
+        <div class="px-40 flex flex-1 justify-center py-5 pt-16">
           <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
             <div class="flex flex-wrap justify-between gap-3 p-4">
               <div class="flex min-w-72 flex-col gap-3">
