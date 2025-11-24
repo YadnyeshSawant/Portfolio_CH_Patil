@@ -29,48 +29,144 @@
   <body>
     <div
       class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden"
-      style='font-family: Inter, "Noto Sans", sans-serif;'
+      style="font-family: Inter, 'Noto Sans', sans-serif"
     >
       <div class="layout-container flex h-full grow flex-col">
         <!-- Fixed Top Header with Animated Background -->
-      <header class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg">
-        <div class="flex items-center gap-4 text-[#0e141b] group">
-          <div class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_6_319)">
-                <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-              </defs>
-            </svg>
+        <header
+          class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
+        >
+          <div class="flex items-center gap-4 text-[#0e141b] group">
+            <div
+              class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12"
+            >
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_6_319)">
+                  <path
+                    d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_319">
+                    <rect width="48" height="48" fill="white"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <a
+              href="index.html"
+              class="transition-transform duration-300 ease-in-out hover:scale-105"
+            >
+              <h2
+                class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]"
+              >
+                Dr. C.H.Patil
+              </h2>
+            </a>
           </div>
-          <a href="index.html" class="transition-transform duration-300 ease-in-out hover:scale-105">
-            <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]">
-              Dr. C.H.Patil
-            </h2>
-          </a>
-        </div>
 
-        <div class="flex flex-1 justify-end gap-8 items-center">
-          <div class="flex items-center gap-9">
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="about.html">About</a>
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="patentsAndCopyrights.html">Patents/Copyrights</a>
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="conference.html">Conference</a>
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="publications.html">Publications</a>
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="skills.html">Skills</a>
-            <a class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1" href="contact.html">Contact</a>
+          <div class="flex flex-1 justify-end gap-8 items-center">
+            <div class="flex items-center gap-9">
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="about.html"
+                >About</a
+              >
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="patentsAndCopyrights.html"
+                >Patents/Copyrights</a
+              >
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="conference.html"
+                >Conference</a
+              >
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="publications.html"
+                >Publications</a
+              >
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="skills.html"
+                >Skills</a
+              >
+              <a
+                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="contact.html"
+                >Contact</a
+              >
+            </div>
+
+            <a
+              href="resume.pdf"
+              target="_blank"
+              class="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
+            >
+              <span class="truncate">Resume</span>
+            </a>
+
+            <div
+              class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
+              style="background-image: url('1516640279911.jpeg')"
+            ></div>
           </div>
-
-          <a href="resume.pdf" target="_blank" class="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md">
-            <span class="truncate">Resume</span>
-          </a>
-
-          <div class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2" style="background-image: url('1516640279911.jpeg')"></div>
-        </div>
-      </header>
-        <div class="px-40 flex flex-1 justify-center py-5 pt-16">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        </header>
+        <nav
+          class="fixed left-0 top-[64px] z-20 flex h-[calc(100vh-64px)] w-64 flex-col border-r border-solid border-slate-200 bg-white p-5 overflow-y-auto"
+        >
+          <div class="flex items-center gap-3 pb-6">
+            <div class="size-8 text-[#0e141b]">
+              <svg
+                fill="none"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0e141b] text-lg font-bold">Portfolio</h2>
+          </div>
+          <div class="flex flex-col gap-1 text-sm font-medium">
+            <a
+              href="index.html"
+              class="flex h-10 items-center rounded-md bg-slate-100 px-3 text-slate-900 transition-all duration-300 hover:bg-[#e6f0ff] hover:-translate-y-0.5"
+              >Home</a
+            >
+            <a
+              href="about.html"
+              class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
+              >About</a
+            >
+            <!-- <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Education</a>
+          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Experience</a>
+          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Projects</a>
+          <a href="skills.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Skills</a>
+          <a href="resume.pdf" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Resume</a>
+          <a href="patentsAndCopyrights.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Patents</a>
+          <a href="conference.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">International Conference Presentations</a>
+          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">National Conference Presentations</a>
+          <a href="publications.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">International Journal Publications</a> -->
+            <a
+              href="contact.html"
+              class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
+              >Contact</a
+            >
+          </div>
+        </nav>
+        <div class="px-40 flex flex-1 justify-center py-5 pt-20">
+          <div
+            class="layout-content-container flex flex-col max-w-[960px] flex-1"
+          >
             <main class="flex flex-col gap-8">
               <div class="flex flex-wrap justify-between gap-3 p-4">
                 <div class="flex min-w-72 flex-col gap-3">
@@ -175,8 +271,9 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            Air-Written Digit Recognition with CNN(ResNet-18) and
-                            BiLSTM: A Spatio-Temporal Approach on ISI-Air Dataset
+                            Air-Written Digit Recognition with CNN(ResNet-18)
+                            and BiLSTM: A Spatio-Temporal Approach on ISI-Air
+                            Dataset
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -440,7 +537,8 @@
                                 <strong>C. H. Patil</strong>, Meenal Jabde.
                                 December 10-12, 2024. 6th International
                                 Conference on Soft Computing and its Engineering
-                                Applications (icSoftComp2024), Bangkok, Thailand.
+                                Applications (icSoftComp2024), Bangkok,
+                                Thailand.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -555,8 +653,8 @@
                                 Eknath Rokade, Meenal Jabde,
                                 <strong>C. H. Patil</strong>. 25th to 27th July,
                                 2024. 10th International Conference on Smart
-                                Computing and Communication (ICSCC) – ICSCC 2024,
-                                Bengluru, India.
+                                Computing and Communication (ICSCC) – ICSCC
+                                2024, Bengluru, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -612,9 +710,9 @@
                               >
                                 <strong>C. H. Patil</strong>, Sachin Bhoite,
                                 Harshali Patil, Meenal Jabde. July 23-24, 2024.
-                                Fifteenth International Conference on Advances in
-                                Communication, Network, and Computing – CNC 2024,
-                                Bengluru, India.
+                                Fifteenth International Conference on Advances
+                                in Communication, Network, and Computing – CNC
+                                2024, Bengluru, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -670,9 +768,9 @@
                               >
                                 <strong>C. H. Patil</strong>, Sachin Bhoite,
                                 Harshali Patil, Meenal Jabde. July 23-24, 2024.
-                                Fifteenth International Conference on Advances in
-                                Communication, Network, and Computing – CNC 2024,
-                                Bengluru, India.
+                                Fifteenth International Conference on Advances
+                                in Communication, Network, and Computing – CNC
+                                2024, Bengluru, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -749,8 +847,8 @@
                               >
                                 <strong>C. H. Patil</strong>, Sunil Patil, Raut,
                                 Kumar Borkar, Shruti Rawade. June 21-22, 2024.
-                                Fifteenth International Conference on Advances in
-                                Computing, Control, and Telecommunication
+                                Fifteenth International Conference on Advances
+                                in Computing, Control, and Telecommunication
                                 Technologies - ACT 2024, Hyderabad, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -806,11 +904,11 @@
                               <p
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
-                                <strong>C. H. Patil</strong>, Ashish Garud, Akash
-                                Gavhane, Arjun Sonawane, Mayur Jadhav. June
-                                21-22, 2024. Fifteenth International Conference
-                                on Advances in Computing, Control, and
-                                Telecommunication Technologies - ACT 2024,
+                                <strong>C. H. Patil</strong>, Ashish Garud,
+                                Akash Gavhane, Arjun Sonawane, Mayur Jadhav.
+                                June 21-22, 2024. Fifteenth International
+                                Conference on Advances in Computing, Control,
+                                and Telecommunication Technologies - ACT 2024,
                                 Hyderabad, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -926,10 +1024,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 <strong>C. H. Patil</strong>, Harshal Patil,
-                                Kaustubh Deodhar, Amaan Sayyed, Hitank Shah. June
-                                21-22, 2024. Fifteenth International Conference
-                                on Advances in Computing, Control, and
-                                Telecommunication Technologies - ACT 2024,
+                                Kaustubh Deodhar, Amaan Sayyed, Hitank Shah.
+                                June 21-22, 2024. Fifteenth International
+                                Conference on Advances in Computing, Control,
+                                and Telecommunication Technologies - ACT 2024,
                                 Hyderabad, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -987,8 +1085,8 @@
                               >
                                 <strong>C. H. Patil</strong>, Aniket Nagane,
                                 Renuka Deokar, Isha Sonsale. June 21-22, 2024.
-                                Fifteenth International Conference on Advances in
-                                Computing, Control, and Telecommunication
+                                Fifteenth International Conference on Advances
+                                in Computing, Control, and Telecommunication
                                 Technologies - ACT 2024, Hyderabad, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -1034,8 +1132,8 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            Ultrasound-Based Breast Cancer Detection Using CNN: A
-                            Transfer Learning Approach
+                            Ultrasound-Based Breast Cancer Detection Using CNN:
+                            A Transfer Learning Approach
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -1046,8 +1144,8 @@
                               >
                                 Kalpesh Patil, Saloni Sathe, Meet Bhingardiya,
                                 <strong>C. H. Patil</strong>. June 21-22, 2024.
-                                Fifteenth International Conference on Advances in
-                                Computing, Control, and Telecommunication
+                                Fifteenth International Conference on Advances
+                                in Computing, Control, and Telecommunication
                                 Technologies - ACT 2024, Hyderabad, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -1209,8 +1307,8 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            Assessing Agricultural Drought Dynamics by Leveraging
-                            Landsat Time-Series Data and Supervised
+                            Assessing Agricultural Drought Dynamics by
+                            Leveraging Landsat Time-Series Data and Supervised
                             Classification
                           </p>
                           <div
@@ -1290,7 +1388,8 @@
                                   <p
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
-                                    Lecture Notes in Electrical Engineering (LNEE)
+                                    Lecture Notes in Electrical Engineering
+                                    (LNEE)
                                   </p>
                                 </div>
                                 <div
@@ -1337,8 +1436,8 @@
                               >
                                 Amol D. Vibhute, <strong>C. H. Patil</strong>,
                                 Arjun V. Mane, Karbhari V. Kale. 10-11 January
-                                2024. International Conference on Innovative Data
-                                Communication Technologies and Applications
+                                2024. International Conference on Innovative
+                                Data Communication Technologies and Applications
                                 (ICIDCA 2024), Coimbatore, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
@@ -1394,9 +1493,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Atiya Khan, Amol Vibhute, S. M. Mali,
-                                <strong>C. H. Patil</strong>. December 7-9, 2023.
-                                5th International Conference on Soft Computing
-                                and its Engineering Applications (icSoftComp2023).
+                                <strong>C. H. Patil</strong>. December 7-9,
+                                2023. 5th International Conference on Soft
+                                Computing and its Engineering Applications
+                                (icSoftComp2023).
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -1440,9 +1540,9 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            “Network anomaly detection and performance evaluation
-                            of Convolutional Neural Networks on UNSW-NB15
-                            dataset”
+                            “Network anomaly detection and performance
+                            evaluation of Convolutional Neural Networks on
+                            UNSW-NB15 dataset”
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -1568,11 +1668,11 @@
                               <p
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
-                                Mayuri Bapat, <strong>C. H. Patil</strong>, S. M.
-                                Mali. August 23-24, 2023. Twelfth International
-                                Conference on Recent Trends in Information
-                                Processing and Computing- IPC 2023, Bhopal,
-                                India.
+                                Mayuri Bapat, <strong>C. H. Patil</strong>, S.
+                                M. Mali. August 23-24, 2023. Twelfth
+                                International Conference on Recent Trends in
+                                Information Processing and Computing- IPC 2023,
+                                Bhopal, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -1617,8 +1717,8 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            “Usability Assessment Framework For Usability Testing
-                            Of A Software Application”
+                            “Usability Assessment Framework For Usability
+                            Testing Of A Software Application”
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -1627,11 +1727,11 @@
                               <p
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
-                                Nisha Kamble, <strong>C. H. Patil</strong>, S. M.
-                                Mali. August 23-24, 2023. Twelfth International
-                                Conference on Recent Trends in Information
-                                Processing and Computing- IPC 2023, Bhopal,
-                                India.
+                                Nisha Kamble, <strong>C. H. Patil</strong>, S.
+                                M. Mali. August 23-24, 2023. Twelfth
+                                International Conference on Recent Trends in
+                                Information Processing and Computing- IPC 2023,
+                                Bhopal, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -1707,10 +1807,10 @@
                               <p
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
-                                <strong>C. H. Patil</strong>, Renuka Zope, Meenal
-                                Jabde. May 4-6, 2023. 2nd International
-                                Conference on Applied Artificial Intelligence and
-                                Computing ICAAIC 2023, Salem, India.
+                                <strong>C. H. Patil</strong>, Renuka Zope,
+                                Meenal Jabde. May 4-6, 2023. 2nd International
+                                Conference on Applied Artificial Intelligence
+                                and Computing ICAAIC 2023, Salem, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -1949,7 +2049,8 @@
                                   <p
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
-                                    Lecture Notes in Electrical Engineering (LNEE)
+                                    Lecture Notes in Electrical Engineering
+                                    (LNEE)
                                   </p>
                                 </div>
                                 <div
@@ -1996,9 +2097,9 @@
                               >
                                 Atiya Khan, Amol Vibhute, S. M. Mali,
                                 <strong>C. H. Patil</strong>. January 27-28,
-                                2023. International Conference on Intelligent and
-                                Innovative Technologies in Computing, Electrical
-                                and Electronics (ICIITCEE 2023).
+                                2023. International Conference on Intelligent
+                                and Innovative Technologies in Computing,
+                                Electrical and Electronics (ICIITCEE 2023).
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -2043,8 +2144,8 @@
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
                             Classification of Brahmi script characters using HOG
-                            features and multiclass error-correcting output codes
-                            (ECOC) model containing SVM binary learners
+                            features and multiclass error-correcting output
+                            codes (ECOC) model containing SVM binary learners
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -2367,9 +2468,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 <strong>C.H. Patil</strong>, Amol D. Vibhute,
-                                Shankar Mali, Sachin Naik, Nakia Lightwala, Mehul
-                                Sherdiwala. June 2022. 2022 IEEE World Conference
-                                on Applied Intelligence and Computing (AIC 2022).
+                                Shankar Mali, Sachin Naik, Nakia Lightwala,
+                                Mehul Sherdiwala. June 2022. 2022 IEEE World
+                                Conference on Applied Intelligence and Computing
+                                (AIC 2022).
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -2435,7 +2537,8 @@
                                   <p
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
-                                    Lecture Notes in Electrical Engineering (LNEE)
+                                    Lecture Notes in Electrical Engineering
+                                    (LNEE)
                                   </p>
                                 </div>
                                 <div
@@ -2616,9 +2719,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Aniket Nagane, S. M. Mali,
-                                <strong>C. H. Patil</strong>. 2018. International
-                                Conference on ‘Changing perspective of Industries
-                                with Industry 4.0’, Pune, India.
+                                <strong>C. H. Patil</strong>. 2018.
+                                International Conference on ‘Changing
+                                perspective of Industries with Industry 4.0’,
+                                Pune, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -2632,7 +2736,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -2657,8 +2761,9 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 <strong>C. H. Patil</strong>, S. M. Mali. 2018.
-                                International Conference on ‘Changing perspective
-                                of Industries with Industry 4.0’, Pune, India.
+                                International Conference on ‘Changing
+                                perspective of Industries with Industry 4.0’,
+                                Pune, India.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -2672,7 +2777,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -2750,8 +2855,8 @@
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
                                     Int. Journal of Scientific Research in
-                                    Computer Science, Engineering and Information
-                                    Technology
+                                    Computer Science, Engineering and
+                                    Information Technology
                                   </p>
                                 </div>
                               </div>
@@ -2802,8 +2907,8 @@
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
                                     Int. Journal of Scientific Research in
-                                    Computer Science, Engineering and Information
-                                    Technology
+                                    Computer Science, Engineering and
+                                    Information Technology
                                   </p>
                                 </div>
                               </div>
@@ -2854,8 +2959,8 @@
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
                                     Int. Journal of Scientific Research in
-                                    Computer Science, Engineering and Information
-                                    Technology
+                                    Computer Science, Engineering and
+                                    Information Technology
                                   </p>
                                 </div>
                               </div>
@@ -2894,9 +2999,9 @@
                                 <strong>C. H. Patil</strong>, Dheeraj Solankar,
                                 Hritwika Dubey, Kashish Roy, Arundhati Dhar. Feb
                                 28, 2022. Third National level students
-                                conference on Innovative Ideas and Invention with
-                                Sustainability in Computer Science and IT-2022,
-                                MITWPU.
+                                conference on Innovative Ideas and Invention
+                                with Sustainability in Computer Science and
+                                IT-2022, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -2906,8 +3011,8 @@
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
                                     Int. Journal of Scientific Research in
-                                    Computer Science, Engineering and Information
-                                    Technology
+                                    Computer Science, Engineering and
+                                    Information Technology
                                   </p>
                                 </div>
                               </div>
@@ -2978,13 +3083,13 @@
                                     class="text-primary text-xs font-medium leading-normal"
                                   >
                                     Int. Journal of Scientific Research in
-                                    Computer Science, Engineering and Information
-                                    Technology
+                                    Computer Science, Engineering and
+                                    Information Technology
                                   </p>
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3029,10 +3134,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 N Francis Maringmei,
-                                <strong>C. H. Patil</strong>. Feb 28, 2020. First
-                                National level students conference on Innovations
-                                in Computer Science and Information Technology
-                                Sustanability - 2020, MITWPU.
+                                <strong>C. H. Patil</strong>. Feb 28, 2020.
+                                First National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology Sustanability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3046,7 +3151,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3070,11 +3175,11 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Sayali Amrutkar, Sayali Patil, Abhilasha Kumari,
-                                Jigneshkumar Mahadik, <strong>C.H.Patil</strong>.
-                                Feb 28, 2020. First National level students
-                                conference on Innovations in Computer Science and
-                                Information Technology Sustanability - 2020,
-                                MITWPU.
+                                Jigneshkumar Mahadik,
+                                <strong>C.H.Patil</strong>. Feb 28, 2020. First
+                                National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology Sustanability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3088,7 +3193,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3130,7 +3235,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3171,7 +3276,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3196,11 +3301,11 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Jatin Pakhrani, Ashin Varghese, Shubham Vyas,
-                                Himanshu Purohit, <strong>C.H.Patil</strong>. Feb
-                                28, 2020. First National level students
-                                conference on Innovations in Computer Science and
-                                Information Technology sustainability - 2020,
-                                MITWPU.
+                                Himanshu Purohit, <strong>C.H.Patil</strong>.
+                                Feb 28, 2020. First National level students
+                                conference on Innovations in Computer Science
+                                and Information Technology sustainability -
+                                2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3214,7 +3319,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3238,10 +3343,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Albino Alex Braganza, Amit Gour, Ravi Kumar,
-                                <strong>C. H. Patil</strong>. Feb 28, 2020. First
-                                National level students conference on Innovations
-                                in Computer Science and Information Technology
-                                Sustainability - 2020, MITWPU.
+                                <strong>C. H. Patil</strong>. Feb 28, 2020.
+                                First National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology Sustainability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3255,7 +3360,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3269,8 +3374,8 @@
                           <p
                             class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]"
                           >
-                            Improving Security in Automatic Teller Machines (ATM)
-                            using Biometrics & OTP or IRIS Recognition
+                            Improving Security in Automatic Teller Machines
+                            (ATM) using Biometrics & OTP or IRIS Recognition
                           </p>
                           <div
                             class="flex items-start gap-3 justify-between flex-col sm:flex-row sm:items-end"
@@ -3282,9 +3387,9 @@
                                 Shubham Modi, Pushkar Parmar, Shohrat Ali,
                                 Pratiksha Vidhale, <strong>C. H. Patil</strong>.
                                 Feb 28, 2020. First National level students
-                                conference on Innovations in Computer Science and
-                                Information Technology Sustainability - 2020,
-                                MITWPU.
+                                conference on Innovations in Computer Science
+                                and Information Technology Sustainability -
+                                2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3298,7 +3403,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3323,9 +3428,10 @@
                               >
                                 Ravi Kumar, Kanchan Kumari, Lokesh Kumar, Hitesh
                                 Kumar, <strong>C. H. Patil</strong>. Feb 28,
-                                2020. First National level students conference on
-                                Innovations in Computer Science and Information
-                                Technology Sustainability - 2020, MITWPU.
+                                2020. First National level students conference
+                                on Innovations in Computer Science and
+                                Information Technology Sustainability - 2020,
+                                MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3339,7 +3445,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3363,10 +3469,11 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Sarvesha Chodankar, Amanda Michael, Siddharth
-                                Walke, <strong>C. H.Patil</strong>. Feb 28, 2020.
-                                First National level students conference on
-                                Innovations in Computer Science and Information
-                                Technology sustainability - 2020, MITWPU.
+                                Walke, <strong>C. H.Patil</strong>. Feb 28,
+                                2020. First National level students conference
+                                on Innovations in Computer Science and
+                                Information Technology sustainability - 2020,
+                                MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3380,7 +3487,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3406,9 +3513,9 @@
                                 Kritika Sharma, Deeksha Phatte, Raveena Mathkar,
                                 Ankush Kumar, <strong>C. H. Patil</strong>. Feb
                                 28, 2020. First National level students
-                                conference on Innovations in Computer Science and
-                                Information Technology sustainability - 2020,
-                                MITWPU.
+                                conference on Innovations in Computer Science
+                                and Information Technology sustainability -
+                                2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3422,7 +3529,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3449,9 +3556,9 @@
                                 Vineet Mishra, <strong>C.H.Patil</strong>,
                                 Nilasha Misra, Nishant Saoji, Parnali Bhide. Feb
                                 28, 2020. First National level students
-                                conference on Innovations in Computer Science and
-                                Information Technology sustainability - 2020,
-                                MITWPU.
+                                conference on Innovations in Computer Science
+                                and Information Technology sustainability -
+                                2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3465,7 +3572,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3489,10 +3596,10 @@
                                 class="text-slate-500 text-sm font-normal leading-normal"
                               >
                                 Nikita Agarwal, Pooja Kalambe, Prachi Ghag,
-                                <strong>C. H. Patil</strong>. Feb 28, 2020. First
-                                National level students conference on Innovations
-                                in Computer Science and Information Technology
-                                sustainability - 2020, MITWPU.
+                                <strong>C. H. Patil</strong>. Feb 28, 2020.
+                                First National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology sustainability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3506,7 +3613,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3531,9 +3638,9 @@
                               >
                                 Vinaya Kulkarni, Shivali Kirdat, Sneha Patil,
                                 <strong>C. H.Patil</strong>. Feb 28, 2020. First
-                                National level students conference on Innovations
-                                in Computer Science and Information Technology
-                                sustainability - 2020, MITWPU.
+                                National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology sustainability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3547,7 +3654,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3572,9 +3679,9 @@
                               >
                                 Shiva Vyas, Sneha Joglekar, Jinal Desai,
                                 <strong>C. H.Patil</strong>. Feb 28, 2020. First
-                                National level students conference on Innovations
-                                in Computer Science and Information Technology
-                                Sustanability - 2020, MITWPU.
+                                National level students conference on
+                                Innovations in Computer Science and Information
+                                Technology Sustanability - 2020, MITWPU.
                               </p>
                               <div class="flex gap-2 flex-wrap">
                                 <div
@@ -3588,7 +3695,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3649,7 +3756,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3710,7 +3817,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3770,7 +3877,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3811,7 +3918,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3851,7 +3958,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3912,7 +4019,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -3951,7 +4058,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -4010,7 +4117,7 @@
                                 </div>
                               </div>
                             </div>
-                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
