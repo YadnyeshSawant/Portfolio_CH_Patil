@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
       rel="stylesheet"
@@ -40,12 +41,14 @@
 
   <body class="bg-slate-50" style="font-family: Inter, 'Noto Sans', sans-serif">
     <div class="relative min-h-screen w-full overflow-x-hidden">
+      <!-- HEADER -->
       <header
-        class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
+        class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-4 sm:px-6 lg:px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
       >
-        <div class="flex items-center gap-4 text-[#0e141b] group">
+        <!-- Logo / Name -->
+        <div class="flex items-center gap-3 text-[#0e141b] group">
           <div
-            class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12"
+            class="size-4 sm:size-5 transition-transform duration-300 ease-in-out group-hover:rotate-12"
           >
             <svg
               viewBox="0 0 48 48"
@@ -70,46 +73,47 @@
             class="transition-transform duration-300 ease-in-out hover:scale-105"
           >
             <h2
-              class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]"
+              class="text-[#0e141b] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]"
             >
               Dr. C.H.Patil
             </h2>
           </a>
         </div>
 
-        <div class="flex flex-1 justify-end gap-8 items-center">
-          <div class="flex items-center gap-9">
+        <!-- Desktop / Tablet Nav + Actions -->
+        <div class="hidden md:flex flex-1 justify-end gap-4 lg:gap-6 items-center">
+          <nav class="flex items-center gap-4 lg:gap-8 text-sm font-medium">
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="about.html"
               >About</a
             >
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="patentsAndCopyrights.html"
               >Patents/Copyrights</a
             >
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="conference.html"
               >Conference</a
             >
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="publications.html"
               >Publications</a
             >
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="skills.html"
               >Skills</a
             >
             <a
-              class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="contact.html"
               >Contact</a
             >
-          </div>
+          </nav>
           <a
             href="resume.pdf"
             target="_blank"
@@ -122,10 +126,74 @@
             style="background-image: url('1516640279911.jpeg')"
           ></div>
         </div>
+
+        <!-- Mobile / Small Tablet Header Right Side -->
+        <div class="flex md:hidden items-center gap-2">
+          <a
+            href="resume.pdf"
+            target="_blank"
+            class="flex items-center justify-center rounded-md h-9 px-3 bg-[#1980e6] text-white text-xs font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
+          >
+            Resume
+          </a>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 border border-slate-200 bg-white text-slate-700 hover:bg-[#e6f0ff] hover:border-[#1980e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1980e6]"
+            aria-label="Open navigation menu"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <span class="material-symbols-outlined text-[22px]">menu</span>
+          </button>
+        </div>
       </header>
 
+      <!-- MOBILE NAV MENU -->
+      <div
+        id="mobile-menu"
+        class="md:hidden fixed top-[56px] sm:top-[64px] left-0 right-0 z-20 bg-white border-b border-slate-200 shadow-sm hidden"
+      >
+        <nav class="flex flex-col px-4 py-3 gap-2 text-sm font-medium">
+          <a
+            href="index.html"
+            class="rounded-md px-3 py-2 bg-slate-100 text-slate-900 hover:bg-[#e6f0ff] transition-colors"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >About</a
+          >
+          <a
+            href="patentsAndCopyrights.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Patents/Copyrights</a
+          >
+          <a
+            href="conference.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Conference</a
+          >
+          <a
+            href="publications.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Publications</a
+          >
+          <a
+            href="skills.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Skills</a
+          >
+          <a
+            href="contact.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Contact</a
+          >
+        </nav>
+      </div>
+
+      <!-- LEFT SIDEBAR (LAPTOP & DESKTOP) -->
       <nav
-        class="fixed left-0 top-[64px] z-20 flex h-[calc(100vh-64px)] w-64 flex-col border-r border-solid border-slate-200 bg-white p-5 overflow-y-auto"
+        class="fixed left-0 top-[64px] z-20 hidden lg:flex h-[calc(100vh-64px)] w-64 flex-col border-r border-solid border-slate-200 bg-white p-5 overflow-y-auto"
       >
         <div class="flex items-center gap-3 pb-6">
           <div class="size-8 text-[#0e141b]">
@@ -153,15 +221,6 @@
             class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
             >About</a
           >
-          <!-- <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Education</a>
-          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Experience</a>
-          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Projects</a>
-          <a href="skills.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Skills</a>
-          <a href="resume.pdf" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Resume</a>
-          <a href="patentsAndCopyrights.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">Patents</a>
-          <a href="conference.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">International Conference Presentations</a>
-          <a href="#" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">National Conference Presentations</a>
-          <a href="publications.html" class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5">International Journal Publications</a> -->
           <a
             href="contact.html"
             class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
@@ -170,15 +229,17 @@
         </div>
       </nav>
 
-      <main class="ml-64 mt-[64px] p-10">
+      <!-- MAIN CONTENT -->
+      <main class="mt-[64px] sm:mt-[72px] p-4 sm:p-6 lg:p-10 lg:ml-64">
+        <!-- HERO / INTRO SECTION -->
         <section
-          class="flex flex-col md:flex-row items-center gap-10 rounded-lg bg-slate-900 text-white px-10 py-16 min-h-[600px]"
+          class="flex flex-col md:flex-row items-center gap-8 lg:gap-10 rounded-lg bg-slate-900 text-white px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-14 min-h-[360px] md:min-h-[520px]"
         >
           <div class="w-full md:w-1/2 flex flex-col justify-center gap-4">
-            <h1 class="text-4xl font-black mb-2 typing-text">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black mb-2 typing-text">
               Hi! I am Dr. C.H.Patil
             </h1>
-            <p class="text-base leading-relaxed">
+            <p class="text-sm sm:text-base leading-relaxed text-justify">
               Dedicated and accomplished academic leader with over 19 years of
               teaching and 5+ years of academic administrative experience in
               higher education, currently serving as Associate Professor and
@@ -206,108 +267,79 @@
               higher education.
             </p>
           </div>
-          <div class="w-full md:w-1/2 flex justify-center">
+          <div class="w-full md:w-1/2 flex justify-center mt-6 md:mt-0">
             <img
               src="chpatiln.jpg"
               alt="Dr. C.H. Patil"
-              class="rounded-xl shadow-xl border border-slate-200 object-contain max-w-full h-auto"
+              class="rounded-xl shadow-xl border border-slate-200 object-contain max-w-[260px] sm:max-w-sm md:max-w-md h-auto"
             />
           </div>
         </section>
-        <!-- Short Profile Section -->
-        <section class="py-12">
-          <h3 class="text-2xl font-bold text-[#0e141b] mb-2">Short Profile</h3>
-          <p class="text-slate-600 mb-6">
+
+        <!-- SHORT PROFILE SECTION -->
+        <section class="py-10 sm:py-12">
+          <h3 class="text-xl sm:text-2xl font-bold text-[#0e141b] mb-2">
+            Short Profile
+          </h3>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base">
             A summary of my professional qualifications and achievements.
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >school</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Experience</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">Experience</h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 19+ years of teaching experience <br />(14 Years Assistant
                 Professor 5+ years Associate Professor)
               </p>
             </div>
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >history_edu</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Education</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">Education</h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 Bachelor of Science in Computer Science B.Sc.(CS), <br />Master
                 of Computer Applications (MCA) <br />Ph.D. in Computer Science
                 (Digital Image Processing)
               </p>
             </div>
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >supervisor_account</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Ph.D. Guidance</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">Ph.D. Guidance</h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 2 Ph.D. students Awarded. <br />1 Submitted thesis. <br />1
                 Ph.D. ongoing.
               </p>
             </div>
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >article</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Publications</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">Publications</h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 16 Scopus Journal Publications <br />36 Scopus International
                 Conference publications
               </p>
             </div>
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >menu_book</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Books & Chapters</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">Books & Chapters</h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 2 Scopus book chapters <br />1 book publication
               </p>
             </div>
             <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
+              class="group bg-white border border-slate-200 p-5 sm:p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all"
             >
-              <!-- <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >lightbulb</span
-              > -->
-              <h4 class="font-semibold text-[#0e141b]">Patents & Copyrights</h4>
-              <p class="text-sm text-slate-600">
+              <h4 class="font-semibold text-[#0e141b] mb-1">
+                Patents & Copyrights
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-600">
                 8 Patents (5 granted and 3 published <br />3 Copyright Granted)
               </p>
             </div>
-            <!-- <div
-              class="group bg-white border border-slate-200 p-6 rounded-lg hover:bg-[#f3f8ff] hover:-translate-y-1 hover:shadow-xl hover:border-[#1980e6] transition-all sm:col-span-2 lg:col-span-1"
-            >
-              <span
-                class="material-symbols-outlined text-3xl text-slate-500 mb-2 group-hover:scale-110 transition-transform"
-                >copyright</span
-              >
-              <h4 class="font-semibold text-[#0e141b]">Copyrights</h4>
-              <p class="text-sm text-slate-600">3 Copyright Granted</p>
-            </div> -->
           </div>
         </section>
       </main>
