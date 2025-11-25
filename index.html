@@ -27,6 +27,9 @@
         display: inline-block;
         animation: typing 4s steps(40, end) infinite;
       }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
 
       @keyframes typing {
         from {
@@ -37,6 +40,29 @@
         }
       }
     </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
   </head>
 
   <body class="bg-slate-50" style="font-family: Inter, 'Noto Sans', sans-serif">
@@ -107,6 +133,11 @@
             >
             <a
               class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="profiles.html"
+              >Research Profiles</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="skills.html"
               >Skills</a
             >
@@ -123,10 +154,12 @@
           >
             <span class="truncate">Resume</span>
           </a>
-          <div
-            class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
-            style="background-image: url('1516640279911.jpeg')"
-          ></div>
+          <a href="index.html">
+            <div
+              class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
+              style="background-image: url('1516640279911.jpeg')"
+            ></div>
+          </a>
         </div>
 
         <!-- Mobile / Small Tablet Header Right Side -->
@@ -144,7 +177,7 @@
             aria-label="Open navigation menu"
             onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
           >
-            <span class="material-symbols-outlined text-[22px]">menu</span>
+            <span class="material-symbols-outlined text-sm">menu</span>
           </button>
         </div>
       </header>
@@ -181,6 +214,11 @@
             >Publications</a
           >
           <a
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            href="profiles.html"
+            >Research Profiles</a
+          >
+          <a
             href="skills.html"
             class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
             >Skills</a
@@ -194,10 +232,10 @@
       </div>
 
       <!-- LEFT SIDEBAR (LAPTOP & DESKTOP) -->
-      <nav
+      <!-- <nav
         class="fixed left-0 top-[64px] z-20 hidden lg:flex h-[calc(100vh-64px)] w-64 flex-col border-r border-solid border-slate-200 bg-white p-5 overflow-y-auto"
-      >
-        <div class="flex items-center gap-3 pb-6">
+      > -->
+        <!-- <div class="flex items-center gap-3 pb-6">
           <div class="size-8 text-[#0e141b]">
             <svg
               fill="none"
@@ -211,8 +249,8 @@
             </svg>
           </div>
           <h2 class="text-[#0e141b] text-lg font-bold">Portfolio</h2>
-        </div>
-        <div class="flex flex-col gap-1 text-sm font-medium">
+        </div> -->
+        <!-- <div class="flex flex-col gap-1 text-sm font-medium">
           <a
             href="index.html"
             class="flex h-10 items-center rounded-md bg-slate-100 px-3 text-slate-900 transition-all duration-300 hover:bg-[#e6f0ff] hover:-translate-y-0.5"
@@ -229,10 +267,10 @@
             >Contact</a
           >
         </div>
-      </nav>
+      </nav> -->
 
       <!-- MAIN CONTENT -->
-      <main class="mt-[64px] sm:mt-[72px] p-4 sm:p-6 lg:p-10 lg:ml-64">
+      <main class="mt-[64px] sm:mt-[72px] p-4 sm:p-6 lg:p-10 ">
         <!-- HERO / INTRO SECTION -->
         <section
           class="flex flex-col md:flex-row items-center gap-8 lg:gap-10 rounded-lg bg-slate-900 text-white px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-14 min-h-[360px] md:min-h-[520px]"
@@ -348,6 +386,57 @@
                 8 Patents (5 granted and 3 published <br />3 Copyright Granted)
               </p>
             </div>
+          </div>
+        </section>
+        <section
+          class="py-12 px-4 @[480px]:px-8 w-full flex flex-col gap-8 text-left"
+        >
+          <div class="flex flex-col gap-2 w-full">
+            <h3 class="text-2xl font-bold text-[#0e141b]">
+              Research Profile Links
+            </h3>
+            <p class="text-slate-600">
+              Connect with me on various research platforms.
+            </p>
+          </div>
+          <div
+            class="flex flex-wrap items-center gap-4 w-full mt-6"
+          >
+            <a
+              class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-blue-100 px-4 text-sm font-medium text-blue-800 transition-colors hover:bg-blue-200 flex-grow sm:flex-grow-0 sm:w-auto w-full sm:w-auto"
+              href="https://www.scopus.com/authid/detail.uri?authorId=57422261800"
+              target="_blank"
+            >
+              <span>Scopus ID</span>
+            </a>
+            <a
+              class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-green-100 px-4 text-sm font-medium text-green-800 transition-colors hover:bg-green-200 flex-grow sm:flex-grow-0 sm:w-auto w-full sm:w-auto"
+              href="https://www.webofscience.com/wos/author/record/ACE-9083-2022"
+              target="_blank"
+            >
+              <span>Researcher ID</span>
+            </a>
+            <a
+              class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-lime-100 px-4 text-sm font-medium text-lime-800 transition-colors hover:bg-lime-200 flex-grow sm:flex-grow-0 sm:w-auto w-full sm:w-auto"
+              href="https://orcid.org/0000-0002-6699-1279"
+              target="_blank"
+            >
+              <span>ORCID ID</span>
+            </a>
+            <a
+              class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-sky-100 px-4 text-sm font-medium text-sky-800 transition-colors hover:bg-sky-200 flex-grow sm:flex-grow-0 sm:w-auto w-full sm:w-auto"
+              href="https://scholar.google.com/citations?hl=en&authuser=2&user=nsHuJd0AAAAJ"
+              target="_blank"
+            >
+              <span>Google Scholar</span>
+            </a>
+            <a
+              class="flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-teal-100 px-4 text-sm font-medium text-teal-800 transition-colors hover:bg-teal-200 flex-grow sm:flex-grow-0 sm:w-auto w-full sm:w-auto"
+              href="https://www.researchgate.net/profile/Chandrashekhar-Patil-8"
+              target="_blank"
+            >
+              <span>Research Gate</span>
+            </a>
           </div>
         </section>
       </main>
