@@ -1,871 +1,858 @@
-<html>
+<!DOCTYPE html>
+<html class="light" lang="en">
   <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dr. C.H.Patil – About</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
       rel="stylesheet"
       as="style"
       onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+      href="https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
     />
 
-    <title>Dr. C.H.Patil_Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
   </head>
-  <body>
-    <div
-      class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden"
-      style="font-family: Inter, 'Noto Sans', sans-serif"
-    >
-      <div class="layout-container flex h-full grow flex-col">
-        <!-- Fixed Top Header with Animated Background -->
-        <header
-          class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
-        >
-          <div class="flex items-center gap-4 text-[#0e141b] group">
-            <div
-              class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12"
+
+  <body
+    class="bg-slate-50 font-display"
+    style="font-family: Inter, 'Noto Sans', sans-serif"
+  >
+    <div class="relative min-h-screen w-full flex flex-col overflow-x-hidden">
+      <!-- HEADER (same responsive pattern as index.html) -->
+      <header
+        class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-4 sm:px-6 lg:px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
+      >
+        <!-- Logo / Name -->
+        <div class="flex items-center gap-3 sm:gap-4 text-[#0e141b] group">
+          <div
+            class="size-4 sm:size-5 transition-transform duration-300 ease-in-out group-hover:rotate-12"
+          >
+            <svg
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                viewBox="0 0 48 48"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g clip-path="url(#clip0_6_319)">
-                  <path
-                    d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_319">
-                    <rect width="48" height="48" fill="white"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
-            <a
-              href="index.html"
-              class="transition-transform duration-300 ease-in-out hover:scale-105"
-            >
-              <h2
-                class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em]"
-              >
-                Dr. C.H.Patil
-              </h2>
-            </a>
-          </div>
-
-          <div class="flex flex-1 justify-end gap-8 items-center">
-            <div class="flex items-center gap-9">
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="about.html"
-                >About</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="patentsAndCopyrights.html"
-                >Patents/Copyrights</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="conference.html"
-                >Conference</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="publications.html"
-                >Publications</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="profiles.html"
-                >Research Profiles</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="skills.html"
-                >Skills</a
-              >
-              <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
-                href="contact.html"
-                >Contact</a
-              >
-            </div>
-
-            <a
-              href="resume.pdf"
-              target="_blank"
-              class="flex min-w-[84px] items-center justify-center rounded-lg h-10 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
-            >
-              <span class="truncate">Resume</span>
-            </a>
-
-            <a href="index.html">
-              <div
-                class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
-                style="background-image: url('1516640279911.jpeg')"
-              ></div>
-            </a>
-          </div>
-        </header>
-
-        <!-- <nav
-          class="fixed left-0 top-[64px] z-20 flex h-[calc(100vh-64px)] w-64 flex-col border-r border-solid border-slate-200 bg-white p-5 overflow-y-auto"
-        >
-          <div class="flex items-center gap-3 pb-6">
-            <div class="size-8 text-[#0e141b]">
-              <svg
-                fill="none"
-                viewBox="0 0 48 48"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <g clip-path="url(#clip0_6_319)">
                 <path
                   d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
                   fill="currentColor"
                 ></path>
-              </svg>
-            </div>
-            <h2 class="text-[#0e141b] text-lg font-bold">Portfolio</h2>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_319">
+                  <rect width="48" height="48" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
           </div>
-          <div class="flex flex-col gap-1 text-sm font-medium">
-            <a
-              href="index.html"
-              class="flex h-10 items-center rounded-md bg-slate-100 px-3 text-slate-900 transition-all duration-300 hover:bg-[#e6f0ff] hover:-translate-y-0.5"
-              >Home</a
+          <a
+            href="index.html"
+            class="transition-transform duration-300 ease-in-out hover:scale-105"
+          >
+            <h2
+              class="text-[#0e141b] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]"
             >
+              Dr. C.H.Patil
+            </h2>
+          </a>
+        </div>
+
+        <!-- Desktop / Tablet Nav + Actions -->
+        <div
+          class="hidden md:flex flex-1 justify-end gap-4 lg:gap-6 items-center"
+        >
+          <nav class="flex items-center gap-4 lg:gap-8 text-sm font-medium">
             <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="about.html"
-              class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
               >About</a
             >
             <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="patentsAndCopyrights.html"
+              >Patents/Copyrights</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="conference.html"
+              >Conference</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="publications.html"
+              >Publications</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="profiles.html"
+              >Research Profiles</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="skills.html"
+              >Skills</a
+            >
+            <a
+              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="contact.html"
-              class="flex h-10 items-center rounded-md px-3 text-slate-600 hover:bg-[#e6f0ff] transition-all duration-300 hover:-translate-y-0.5"
               >Contact</a
             >
-          </div>
-        </nav> -->
+          </nav>
 
-        <div class="px-40 flex flex-1 justify-center py-5 pt-16">
-          <div
-            class="layout-content-container pl-90 flex flex-col max-w-[960px] flex-1"
+          <a
+            href="resume.pdf"
+            target="_blank"
+            class="flex min-w-[84px] items-center justify-center rounded-lg h-7 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
           >
-            <div class="flex p-4 @container">
-              <div class="flex w-full flex-col gap-4 items-center">
-                <div class="flex gap-4 flex-col items-center">
-                  <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
-                    style="background-image: url('1516640279911.jpeg')"
-                  ></div>
-                  <div
-                    class="flex flex-col items-center justify-center justify-center"
+            <span class="truncate">Resume</span>
+          </a>
+
+          <a href="index.html">
+            <div
+              class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
+              style="background-image: url('1516640279911.jpeg')"
+            ></div>
+          </a>
+        </div>
+
+        <!-- Mobile / Small Tablet Header Right -->
+        <div class="flex md:hidden items-center gap-2">
+          <a
+            href="resume.pdf"
+            target="_blank"
+            class="flex items-center justify-center rounded-md h-7 px-3 bg-[#1980e6] text-white text-xs font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
+          >
+            Resume
+          </a>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 border border-slate-200 bg-white text-slate-700 hover:bg-[#e6f0ff] hover:border-[#1980e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1980e6] h-7"
+            aria-label="Open navigation menu"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <span class="material-symbols-outlined text-[22px]">menu</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- MOBILE NAV MENU -->
+      <div
+        id="mobile-menu"
+        class="md:hidden fixed top-[56px] sm:top-[64px] left-0 right-0 z-20 bg-white border-b border-slate-200 shadow-sm hidden"
+      >
+        <nav class="flex flex-col px-4 py-3 gap-2 text-sm font-medium">
+          <a
+            href="index.html"
+            class="rounded-md px-3 py-2 bg-slate-100 text-slate-900 hover:bg-[#e6f0ff] transition-colors"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >About</a
+          >
+          <a
+            href="patentsAndCopyrights.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Patents/Copyrights</a
+          >
+          <a
+            href="conference.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Conference</a
+          >
+          <a
+            href="publications.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Publications</a
+          >
+          <a
+            href="profiles.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Research Profiles</a
+          >
+          <a
+            href="skills.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Skills</a
+          >
+          <a
+            href="contact.html"
+            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
+            >Contact</a
+          >
+        </nav>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <main
+        class="mt-[64px] sm:mt-[72px] p-4 sm:p-6 lg:p-10 flex-1 flex justify-center"
+      >
+        <div
+          class="layout-content-container flex flex-col w-full max-w-[960px]"
+        >
+          <!-- Top profile block -->
+          <div class="flex p-4 @container">
+            <div class="flex w-full flex-col gap-4 items-center">
+              <div class="flex gap-4 flex-col items-center">
+                <div
+                  class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                  style="background-image: url('1516640279911.jpeg')"
+                ></div>
+                <div class="flex flex-col items-center justify-center">
+                  <p
+                    class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center"
                   >
-                    <p
-                      class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center"
-                    >
-                      Dr. Chandrashekhar Patil
-                    </p>
-                    <p
-                      class="text-[#4e7397] text-base font-normal leading-normal text-center"
-                    >
-                      Associate Professor
-                    </p>
-                    <p
-                      class="text-[#4e7397] text-base font-normal leading-normal text-center"
-                    >
-                      Department of Computer Science & Applications, Faculty of
-                      Science
-                    </p>
-                    <p
-                      class="text-[#4e7397] text-base font-normal leading-normal text-center"
-                    >
-                      MIT World Peace University, Pune, M.S
-                    </p>
-                  </div>
+                    Dr. Chandrashekhar Patil
+                  </p>
+                  <p
+                    class="text-[#4e7397] text-base font-normal leading-normal text-center"
+                  >
+                    Associate Professor
+                  </p>
+                  <p
+                    class="text-[#4e7397] text-base font-normal leading-normal text-center"
+                  >
+                    Department of Computer Science &amp; Applications, Faculty
+                    of Science
+                  </p>
+                  <p
+                    class="text-[#4e7397] text-base font-normal leading-normal text-center"
+                  >
+                    MIT World Peace University, Pune, M.S
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- About Me -->
-            <div>
-              <h2
-                class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-              >
-                About Me
-              </h2>
+          <!-- About Me -->
+          <div>
+            <h2
+              class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+            >
+              About Me
+            </h2>
+            <p
+              class="text-[#0e141b] text-justify text-base font-normal leading-normal pb-3 pt-1 px-4"
+            >
+              I am Dr. Chandrashekhar Himmatrao Patil, an academician,
+              researcher, and mentor with over 19 years of teaching experience
+              and more than 5 years of academic administrative leadership in
+              higher education. I currently serve as an Associate Professor in
+              the School of Computer Science at MIT World Peace University,
+              Pune, where I have also served as the Head of School.
+              <br /><br />
+              I hold a Ph.D. in Computer Science specializing in Digital Image
+              Processing and am recognized as an approved Ph.D. guide. I have
+              successfully supervised 3 Ph.D. scholars (with 1 ongoing),
+              contributing to impactful research and academic excellence. My
+              research portfolio includes over 100+ publications, including 16
+              Scopus-indexed journal papers, 36+ international conference
+              publications, 2 Scopus book chapters, and 1 book publication.
+              <br /><br />
+              I also hold 8 patents (5 granted and 3 published) and 3
+              copyrights, reflecting my dedication to innovation and real-world
+              technological advancements. My academic leadership includes key
+              roles such as Chairman of the Board of Studies, Member of the
+              Academic Council, IQAC, and Chair of the Entrance Examination
+              Committee for multiple academic sessions.
+              <br /><br />
+              I have been honored with the Ideal Teacher Award (2024) and the
+              Best Teaching Staff Award (2015), acknowledging my commitment to
+              student-centric, value-driven education. My core research
+              interests include Digital Image Processing, Natural Language
+              Processing, Medical Imaging, Machine Learning, Data Mining, Signal
+              Processing, Computer Networks, and Algorithm Design.
+              <br /><br />
+              With a passion for research, innovation, and academic development,
+              I strive to foster a learning environment that promotes
+              excellence, creativity, and technological growth aligned with
+              global educational standards.
+            </p>
+          </div>
+
+          <!-- Interests -->
+          <div>
+            <h2
+              class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
+            >
+              Interests
+            </h2>
+            <p
+              class="text-[#0e141b] text-base text-justify font-normal leading-normal pb-3 pt-1 px-4"
+            >
+              • Digital Image Processing - Image analysis, pattern recognition,
+              and intelligent vision systems.
+              <br /><br />
+              • Natural Language Processing (NLP) - Language modeling, sentiment
+              analysis, and multilingual text recognition.
+              <br /><br />
+              • Speech &amp; Signal Processing - Audio-based emotion detection
+              and speech recognition.
+              <br /><br />
+              • Medical Image Processing - AI-enabled diagnostic systems and
+              healthcare automation.
+              <br /><br />
+              • Machine Learning &amp; Deep Learning - Predictive analytics,
+              classification, and real-time recognition models.
+              <br /><br />
+              • Data Mining &amp; Data Warehousing - Insight extraction and
+              optimized data pipelines.
+              <br /><br />
+              • Computer Networks &amp; IoT - Intelligent devices, smart
+              systems, and network automation.
+              <br /><br />
+              • Algorithms &amp; Software Engineering - Designing efficient
+              algorithms and engineering robust systems.
+              <br /><br />
+              • Technology-Driven Research &amp; Innovation - Creating
+              impactful, research-backed solutions.
+            </p>
+          </div>
+
+          <!-- Education -->
+          <div class="pt-5">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
               <p
-                class="text-[#0e141b] text-justify text-base font-normal leading-normal pb-3 pt-1 px-4"
+                class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
               >
-                I am Dr. Chandrashekhar Himmatrao Patil, an academician,
-                researcher, and mentor with over 19 years of teaching experience
-                and more than 5 years of academic administrative leadership in
-                higher education. I currently serve as an Associate Professor in
-                the School of Computer Science at MIT World Peace University,
-                Pune, where I have also served as the Head of School.
-                <br /><br />
-                I hold a Ph.D. in Computer Science specializing in Digital Image
-                Processing and am recognized as an approved Ph.D. guide. I have
-                successfully supervised 3 Ph.D. scholars (with 1 ongoing),
-                contributing to impactful research and academic excellence. My
-                research portfolio includes over 100+ publications, including 16
-                Scopus-indexed journal papers, 36+ international conference
-                publications, 2 Scopus book chapters, and 1 book publication.
-                <br /><br />
-                I also hold 8 patents (5 granted and 3 published) and 3
-                copyrights, reflecting my dedication to innovation and
-                real-world technological advancements. My academic leadership
-                includes key roles such as Chairman of the Board of Studies,
-                Member of the Academic Council, IQAC, and Chair of the Entrance
-                Examination Committee for multiple academic sessions.
-                <br /><br />
-                I have been honored with the Ideal Teacher Award (2024) and the
-                Best Teaching Staff Award (2015), acknowledging my commitment to
-                student-centric, value-driven education. My core research
-                interests include Digital Image Processing, Natural Language
-                Processing, Medical Imaging, Machine Learning, Data Mining,
-                Signal Processing, Computer Networks, and Algorithm Design.
-                <br /><br />
-                With a passion for research, innovation, and academic
-                development, I strive to foster a learning environment that
-                promotes excellence, creativity, and technological growth
-                aligned with global educational standards.
+                Education
               </p>
             </div>
+            <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
+              <!-- Ph.D. -->
+              <div class="flex flex-col items-center gap-1 pt-3">
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Ph.D. (Computer Science)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  Bharati Vidyapeeth Deemed University, Pune — Awarded May 2016
+                </p>
+              </div>
+              <!-- SET -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  SET (State Eligibility Test)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  Maharashtra — February 2007
+                </p>
+              </div>
+              <!-- MCA -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Master of Computer Applications (MCA)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  Savitribai Phule Pune University — 2006 (70.69%, Distinction)
+                </p>
+              </div>
+              <!-- B.Sc. -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  B.Sc. (Computer Science)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  North Maharashtra University, Jalgaon — 2003 (61.91%, First
+                  Class)
+                </p>
+              </div>
+              <!-- HSC -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  HSC (Science)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  Nashik Board — 2000 (61%, First Class)
+                </p>
+              </div>
+              <!-- SSC -->
+              <div class="flex flex-col items-center gap-1 pb-3">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  SSC
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  Nashik Board — 1998 (57.33%, Second Class)
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <!-- Interests -->
-            <div>
-              <h2
-                class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-              >
-                Interests
-              </h2>
+          <!-- Work Experience -->
+          <div class="pt-5">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
               <p
-                class="text-[#0e141b] text-base text-justify font-normal leading-normal pb-3 pt-1 px-4"
+                class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
               >
-                • Digital Image Processing - Image analysis, pattern
-                recognition, and intelligent vision systems.
-                <br /><br />
-                • Natural Language Processing (NLP) - Language modeling,
-                sentiment analysis, and multilingual text recognition.
-                <br /><br />
-                • Speech & Signal Processing - Audio-based emotion detection and
-                speech recognition.
-                <br /><br />
-                • Medical Image Processing - AI-enabled diagnostic systems and
-                healthcare automation.
-                <br /><br />
-                • Machine Learning & Deep Learning - Predictive analytics,
-                classification, and real-time recognition models.
-                <br /><br />
-                • Data Mining & Data Warehousing - Insight extraction and
-                optimized data pipelines.
-                <br /><br />
-                • Computer Networks & IoT - Intelligent devices, smart systems,
-                and network automation.
-                <br /><br />
-                • Algorithms & Software Engineering - Designing efficient
-                algorithms and engineering robust systems.
-                <br /><br />
-                • Technology-Driven Research & Innovation - Creating impactful,
-                research-backed solutions.
+                Work Experience
               </p>
             </div>
-
-            <!-- Education -->
-            <div class="pt-5">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
+            <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
+              <!-- Associate Professor -->
+              <div class="flex flex-col items-center gap-1 pt-3">
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Associate Professor (School of Computer Science)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  MIT World Peace University, Pune — Oct 2019 - Present
+                </p>
                 <p
-                  class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
+                  class="text-[#0e141b] text-base font-normal text-justify leading-normal pb-3 pt-1 px-4"
                 >
-                  Education
+                  Associate Professor (Oct 2019 - Present). Led curriculum
+                  design and accreditation activities, nurtured a research
+                  culture, and coordinated research projects and Ph.D.
+                  supervision (3 Ph.D. awarded, 1 ongoing). Contributed to
+                  interdisciplinary research, guided funded projects, and
+                  mentored faculty and students in publications, patents, and
+                  conference presentations.
                 </p>
               </div>
-              <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
-                <!-- Ph.D. -->
-                <div class="flex flex-col items-center gap-1 pt-3">
-                  <div class="text-[#0e141b]">
-                    <!-- Graduation Icon -->
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Ph.D. (Computer Science)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    Bharati Vidyapeeth Deemed University, Pune — Awarded May
-                    2016
-                  </p>
-                </div>
-                <!-- SET -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div class="text-[#0e141b]">
-                    <!-- Icon -->
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    SET (State Eligibility Test)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    Maharashtra — February 2007
-                  </p>
-                </div>
-                <!-- MCA -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div class="text-[#0e141b]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Master of Computer Applications (MCA)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    Savitribai Phule Pune University — 2006 (70.69%,
-                    Distinction)
-                  </p>
-                </div>
-                <!-- B.Sc. -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div class="text-[#0e141b]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    B.Sc. (Computer Science)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    North Maharashtra University, Jalgaon — 2003 (61.91%, First
-                    Class)
-                  </p>
-                </div>
-                <!-- HSC -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div class="text-[#0e141b]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    HSC (Science)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    Nashik Board — 2000 (61%, First Class)
-                  </p>
-                </div>
-                <!-- SSC -->
-                <div class="flex flex-col items-center gap-1 pb-3">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div class="text-[#0e141b]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    SSC
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    Nashik Board — 1998 (57.33%, Second Class)
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <!-- Work Experience -->
-            <div class="pt-5">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
+              <!-- Assistant Professor -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Assistant Professor
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  MAEER's Arts, Commerce &amp; Science College / MIT — Jan 2008
+                  - Sep 2019
+                </p>
                 <p
-                  class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
+                  class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
                 >
-                  Work Experience
+                  Assistant Professor (Jan 2008 - Sep 2019). Delivered
+                  undergraduate and postgraduate courses in Computer Science and
+                  MCA. Designed course material, supervised student projects, and
+                  coordinated laboratory and academic activities. Actively
+                  participated in examination duties, BOS activities, and
+                  institution-level committees. Engaged in research, resulting
+                  in journal and conference publications, patents, and student
+                  project mentorship.
                 </p>
               </div>
-              <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
-                <!-- Associate Professor (MIT-WPU) -->
-                <div class="flex flex-col items-center gap-1 pt-3">
-                  <div
-                    class="text-[#0e141b]"
-                    data-icon="Briefcase"
-                    data-size="24px"
-                    data-weight="regular"
-                  >
-                    <!-- briefcase icon -->
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Associate Professor (School of Computer Science)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    MIT World Peace University, Pune — Oct 2019 - Present
-                  </p>
-                  <p
-                    class="text-[#0e141b] text-base font-normal text-justify leading-normal pb-3 pt-1 px-4"
-                  >
-                    Associate Professor (Oct 2019 - Present). Led curriculum
-                    design and accreditation activities, nurtured a research
-                    culture, and coordinated research projects and Ph.D.
-                    supervision (3 Ph.D. awarded, 1 ongoing). Contributed to
-                    interdisciplinary research, guided funded projects, and
-                    mentored faculty and students in publications, patents, and
-                    conference presentations.
-                  </p>
-                </div>
 
-                <!-- Assistant Professor (MAEER/MIT) -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div
-                    class="text-[#0e141b]"
-                    data-icon="Briefcase"
-                    data-size="24px"
-                    data-weight="regular"
+              <!-- Lecturer (BCS) -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+                    <path
+                      d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Assistant Professor
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    MAEER's Arts, Commerce & Science College / MIT — Jan 2008 -
-                    Sep 2019
-                  </p>
-                  <p
-                    class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
-                  >
-                    Assistant Professor (Jan 2008 - Sep 2019). Delivered
-                    undergraduate and postgraduate courses in Computer Science
-                    and MCA. Designed course material, supervised student
-                    projects, and coordinated laboratory and academic
-                    activities. Actively participated in examination duties, BOS
-                    activities, and institution-level committees. Engaged in
-                    research, resulting in journal and conference publications,
-                    patents, and student project mentorship.
-                  </p>
-                </div>
-
-                <!-- Lecturer (BCS), New Arts Ahmednagar -->
-                <div class="flex flex-col items-center gap-1">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div
-                    class="text-[#0e141b]"
-                    data-icon="Briefcase"
-                    data-size="24px"
-                    data-weight="regular"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Lecturer (BCS)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    New Arts, Commerce & Science College, Ahmednagar — Jul 2007
-                    - Dec 2007
-                  </p>
-                  <p
-                    class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
-                  >
-                    Lecturer (BCS) (Jul 2007 - Dec 2007). Taught foundational
-                    computer science courses, supported practical labs, and
-                    assisted in curriculum delivery and student evaluation.
-                  </p>
-                </div>
-
-                <!-- Lecturer (MCA), R.C. Patel Shirpur -->
-                <div class="flex flex-col items-center gap-1 pb-3">
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
-                  <div
-                    class="text-[#0e141b]"
-                    data-icon="Briefcase"
-                    data-size="24px"
-                    data-weight="regular"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Lecturer (MCA)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    R.C. Patel Institute of Management Research & Development,
-                    Shirpur — Jun 2006 - Jul 2007
-                  </p>
-                  <p
-                    class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
-                  >
-                    Lecturer (MCA) (Jun 2006 - Jul 2007). Delivered postgraduate
-                    lectures, guided MCA practicals and projects, and
-                    contributed to academic coordination and student mentoring.
-                  </p>
-                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
               </div>
-            </div>
-
-            <!-- Administrative Experience -->
-            <div class="pt-5">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Lecturer (BCS)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  New Arts, Commerce &amp; Science College, Ahmednagar — Jul
+                  2007 - Dec 2007
+                </p>
                 <p
-                  class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
+                  class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
                 >
-                  Administrative Experience
+                  Lecturer (BCS) (Jul 2007 - Dec 2007). Taught foundational
+                  computer science courses, supported practical labs, and
+                  assisted in curriculum delivery and student evaluation.
                 </p>
               </div>
-              <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
-                <div class="flex flex-col items-center gap-1 pt-3">
-                  <div
-                    class="text-[#0e141b]"
-                    data-icon="Briefcase"
-                    data-size="24px"
-                    data-weight="regular"
+
+              <!-- Lecturer (MCA) -->
+              <div class="flex flex-col items-center gap-1 pb-3">
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2"></div>
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24px"
-                      height="24px"
-                      fill="currentColor"
-                      viewBox="0 0 256 256"
-                    >
-                      <path
-                        d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
-                </div>
-                <div class="flex flex-1 flex-col py-3">
-                  <p
-                    class="text-[#0e141b] text-base font-medium leading-normal"
-                  >
-                    Head, School of Computer Science (5 Years)
-                  </p>
-                  <p
-                    class="text-[#4e7397] text-base font-normal leading-normal"
-                  >
-                    MIT World Peace University, Pune — Sep 2018 - Jun 2023
-                  </p>
-                  <p
-                    class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
-                  >
-                    Working as Head, School of Computer Science, MIT – World
-                    Peace University, Pune from
-                    <strong>17 Sep 2018</strong> to
-                    <strong>30 Jun 2023</strong>. Oversaw academic and
-                    administrative planning, faculty development, accreditation
-                    processes, admission planning, and quality assurance
-                    activities. Led curriculum reforms, research promotion, and
-                    strategic initiatives aligned with institutional vision and
-                    regulatory standards.
-                  </p>
+                    <path
+                      d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                    ></path>
+                  </svg>
                 </div>
               </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Lecturer (MCA)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  R.C. Patel Institute of Management Research &amp; Development,
+                  Shirpur — Jun 2006 - Jul 2007
+                </p>
+                <p
+                  class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
+                >
+                  Lecturer (MCA) (Jun 2006 - Jul 2007). Delivered postgraduate
+                  lectures, guided MCA practicals and projects, and contributed
+                  to academic coordination and student mentoring.
+                </p>
+              </div>
             </div>
-            <br />
-            <div class="px-4 py-5">
-              <h2
-                class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3"
+          </div>
+
+          <!-- Administrative Experience -->
+          <div class="pt-5">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p
+                class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
               >
-                Research Publications
-              </h2>
-              <div class="overflow-x-auto border border-[#e7edf3] rounded-lg">
-                <table class="w-full text-left text-base text-[#0e141b]">
-                  <thead class="bg-slate-100 text-[#4e7397]">
-                    <tr>
-                      <th class="px-6 py-3 font-medium" scope="col">Sr. No.</th>
-                      <th class="px-6 py-3 font-medium" scope="col">
-                        Research Outcome
-                      </th>
-                      <th class="px-6 py-3 font-medium text-center" scope="col">
-                        Scopus
-                      </th>
-                      <th class="px-6 py-3 font-medium text-center" scope="col">
-                        Non-Scopus
-                      </th>
-                      <th class="px-6 py-3 font-medium text-center" scope="col">
-                        Total
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">1</td>
-                      <td class="px-6 py-4">International Journal</td>
-                      <td class="px-6 py-4 text-center">
-                        20
-                        <span class="text-sm text-[#4e7397]"
-                          >(Sci-6, Q1-7, Q2-4, Q3-9)</span
-                        >
-                      </td>
-                      <td class="px-6 py-4 text-center">3</td>
-                      <td class="px-6 py-4 text-center font-medium">22</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">2</td>
-                      <td class="px-6 py-4">International Conference</td>
-                      <td class="px-6 py-4 text-center">41</td>
-                      <td class="px-6 py-4 text-center">2</td>
-                      <td class="px-6 py-4 text-center font-medium">43</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">3</td>
-                      <td class="px-6 py-4">Book</td>
-                      <td class="px-6 py-4 text-center">0</td>
-                      <td class="px-6 py-4 text-center">1</td>
-                      <td class="px-6 py-4 text-center font-medium">1</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">4</td>
-                      <td class="px-6 py-4">Book Chapter</td>
-                      <td class="px-6 py-4 text-center">2</td>
-                      <td class="px-6 py-4 text-center">0</td>
-                      <td class="px-6 py-4 text-center font-medium">2</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">5</td>
-                      <td class="px-6 py-4">Patent</td>
-                      <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
-                      <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
-                      <td class="px-6 py-4 text-center font-medium">8</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">6</td>
-                      <td class="px-6 py-4">Copyright</td>
-                      <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
-                      <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
-                      <td class="px-6 py-4 text-center font-medium">3</td>
-                    </tr>
-                    <tr class="border-b border-[#e7edf3]">
-                      <td class="px-6 py-4">7</td>
-                      <td class="px-6 py-4">National Conference</td>
-                      <td class="px-6 py-4 text-center">0</td>
-                      <td class="px-6 py-4 text-center">27</td>
-                      <td class="px-6 py-4 text-center font-medium">27</td>
-                    </tr>
-                    <tr class="bg-slate-100 font-bold">
-                      <td class="px-6 py-4 text-left" colspan="2">Total</td>
-                      <td class="px-6 py-4 text-center">63</td>
-                      <td class="px-6 py-4 text-center">33</td>
-                      <td class="px-6 py-4 text-center">108</td>
-                    </tr>
-                  </tbody>
-                  <tfoot>
-                    <tr class="border-t border-[#e7edf3]">
-                      <td class="px-6 py-4 font-medium" colspan="2">
-                        Research Guidance
-                      </td>
-                      <td class="px-6 py-4" colspan="2">
-                        Ph.D. Awarded - 3<br />Ph.D. Ongoing - 1
-                      </td>
-                      <td class="px-6 py-4 text-center font-medium">4</td>
-                    </tr>
-                    <tr class="border-t border-[#e7edf3]">
-                      <td class="px-6 py-4 font-medium" colspan="2">
-                        Research Project
-                      </td>
-                      <td class="px-6 py-4" colspan="2">
-                        1.5 lac from BCUD, University of Pune
-                      </td>
-                      <td class="px-6 py-4 text-center font-medium">
-                        1.5 lacs
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
+                Administrative Experience
+              </p>
             </div>
-            <!-- Awards -->
-            <div class="pt-5 pb-8">
-              <div class="flex flex-wrap justify-between gap-3 p-4">
+            <div class="grid grid-cols-[40px_1fr] gap-x-2 px-4">
+              <div class="flex flex-col items-center gap-1 pt-3">
+                <div class="text-[#0e141b]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24px"
+                    height="24px"
+                    fill="currentColor"
+                    viewBox="0 0 256 256"
+                  >
+                    <path
+                      d="M216,56H176V48a24,24,0,0,0-24-24H104A24,24,0,0,0,80,48v8H40A16,16,0,0,0,24,72V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56ZM96,48a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96ZM216,72v41.61A184,184,0,0,1,128,136a184.07,184.07,0,0,1-88-22.38V72Zm0,128H40V131.64A200.19,200.19,0,0,0,128,152a200.25,200.25,0,0,0,88-20.37V200ZM104,112a8,8,0,0,1,8-8h32a8,8,0,0,1,0,16H112A8,8,0,0,1,104,112Z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="w-[1.5px] bg-[#d0dbe7] h-2 grow"></div>
+              </div>
+              <div class="flex flex-1 flex-col py-3">
+                <p class="text-[#0e141b] text-base font-medium leading-normal">
+                  Head, School of Computer Science (5 Years)
+                </p>
+                <p class="text-[#4e7397] text-base font-normal leading-normal">
+                  MIT World Peace University, Pune — Sep 2018 - Jun 2023
+                </p>
                 <p
-                  class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
+                  class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4 text-justify"
                 >
-                  Awards
+                  Working as Head, School of Computer Science, MIT – World Peace
+                  University, Pune from
+                  <strong>17 Sep 2018</strong> to
+                  <strong>30 Jun 2023</strong>. Oversaw academic and
+                  administrative planning, faculty development, accreditation
+                  processes, admission planning, and quality assurance
+                  activities. Led curriculum reforms, research promotion, and
+                  strategic initiatives aligned with institutional vision and
+                  regulatory standards.
                 </p>
               </div>
-              <div class="px-4">
-                <ul
-                  class="list-disc pl-6 text-[#0e141b] text-base font-normal leading-normal text-justify"
-                >
-                  <li class="pb-2">
-                    Received <strong>Ideal Teacher Award</strong> by MAEER's MIT
-                    Group of Institutions on the occasion of
-                    <em>Founder's Day</em> — 3rd February 2024.
-                  </li>
-                  <li>
-                    Received <strong>Best Teaching Staff Award</strong> by
-                    MAEER's Arts, Commerce and Science College at the Annual
-                    Social Gathering <em>Prism-2015</em>.
-                  </li>
-                </ul>
-              </div>
+            </div>
+          </div>
+
+          <!-- Research Publications -->
+          <div class="px-4 py-5">
+            <h2
+              class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3"
+            >
+              Research Publications
+            </h2>
+            <div class="overflow-x-auto border border-[#e7edf3] rounded-lg">
+              <table class="w-full text-left text-base text-[#0e141b]">
+                <thead class="bg-slate-100 text-[#4e7397]">
+                  <tr>
+                    <th class="px-6 py-3 font-medium" scope="col">Sr. No.</th>
+                    <th class="px-6 py-3 font-medium" scope="col">
+                      Research Outcome
+                    </th>
+                    <th
+                      class="px-6 py-3 font-medium text-center"
+                      scope="col"
+                    >
+                      Scopus
+                    </th>
+                    <th
+                      class="px-6 py-3 font-medium text-center"
+                      scope="col"
+                    >
+                      Non-Scopus
+                    </th>
+                    <th
+                      class="px-6 py-3 font-medium text-center"
+                      scope="col"
+                    >
+                      Total
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">1</td>
+                    <td class="px-6 py-4">International Journal</td>
+                    <td class="px-6 py-4 text-center">
+                      20
+                      <span class="text-sm text-[#4e7397]"
+                        >(Sci-6, Q1-7, Q2-4, Q3-9)</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-center">3</td>
+                    <td class="px-6 py-4 text-center font-medium">22</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">2</td>
+                    <td class="px-6 py-4">International Conference</td>
+                    <td class="px-6 py-4 text-center">41</td>
+                    <td class="px-6 py-4 text-center">2</td>
+                    <td class="px-6 py-4 text-center font-medium">43</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">3</td>
+                    <td class="px-6 py-4">Book</td>
+                    <td class="px-6 py-4 text-center">0</td>
+                    <td class="px-6 py-4 text-center">1</td>
+                    <td class="px-6 py-4 text-center font-medium">1</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">4</td>
+                    <td class="px-6 py-4">Book Chapter</td>
+                    <td class="px-6 py-4 text-center">2</td>
+                    <td class="px-6 py-4 text-center">0</td>
+                    <td class="px-6 py-4 text-center font-medium">2</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">5</td>
+                    <td class="px-6 py-4">Patent</td>
+                    <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
+                    <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
+                    <td class="px-6 py-4 text-center font-medium">8</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">6</td>
+                    <td class="px-6 py-4">Copyright</td>
+                    <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
+                    <td class="px-6 py-4 text-center text-[#4e7397]">NA</td>
+                    <td class="px-6 py-4 text-center font-medium">3</td>
+                  </tr>
+                  <tr class="border-b border-[#e7edf3]">
+                    <td class="px-6 py-4">7</td>
+                    <td class="px-6 py-4">National Conference</td>
+                    <td class="px-6 py-4 text-center">0</td>
+                    <td class="px-6 py-4 text-center">27</td>
+                    <td class="px-6 py-4 text-center font-medium">27</td>
+                  </tr>
+                  <tr class="bg-slate-100 font-bold">
+                    <td class="px-6 py-4 text-left" colspan="2">Total</td>
+                    <td class="px-6 py-4 text-center">63</td>
+                    <td class="px-6 py-4 text-center">33</td>
+                    <td class="px-6 py-4 text-center">108</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="border-t border-[#e7edf3]">
+                    <td class="px-6 py-4 font-medium" colspan="2">
+                      Research Guidance
+                    </td>
+                    <td class="px-6 py-4" colspan="2">
+                      Ph.D. Awarded - 3<br />Ph.D. Ongoing - 1
+                    </td>
+                    <td class="px-6 py-4 text-center font-medium">4</td>
+                  </tr>
+                  <tr class="border-t border-[#e7edf3]">
+                    <td class="px-6 py-4 font-medium" colspan="2">
+                      Research Project
+                    </td>
+                    <td class="px-6 py-4" colspan="2">
+                      1.5 lac from BCUD, University of Pune
+                    </td>
+                    <td class="px-6 py-4 text-center font-medium">1.5 lacs</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
+          <!-- Awards -->
+          <div class="pt-5 pb-8">
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p
+                class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight min-w-72"
+              >
+                Awards
+              </p>
+            </div>
+            <div class="px-4">
+              <ul
+                class="list-disc pl-6 text-[#0e141b] text-base font-normal leading-normal text-justify"
+              >
+                <li class="pb-2">
+                  Received <strong>Ideal Teacher Award</strong> by MAEER's MIT
+                  Group of Institutions on the occasion of
+                  <em>Founder's Day</em> — 3rd February 2024.
+                </li>
+                <li>
+                  Received <strong>Best Teaching Staff Award</strong> by MAEER's
+                  Arts, Commerce and Science College at the Annual Social
+                  Gathering <em>Prism-2015</em>.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>
