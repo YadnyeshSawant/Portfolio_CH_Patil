@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Site Under Updates</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-background-light dark:bg-background-dark font-display">
+    <div
+      class="relative flex min-h-screen w-full flex-col items-center justify-center p-4"
+    >
+      <div
+        class="layout-container flex h-full grow flex-col items-center justify-center"
+      >
+        <div
+          class="layout-content-container flex flex-col max-w-[960px] flex-1 items-center justify-center text-center"
+        >
+          <div class="flex flex-col items-center gap-8 px-4 py-6">
+            <div class="flex flex-col items-center gap-6">
+              <div
+                class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20"
+              >
+                <span class="material-symbols-outlined text-4xl text-primary"
+                  >build</span
+                >
+              </div>
+              <div class="flex max-w-[480px] flex-col items-center gap-2">
+                <p
+                  class="text-[#0e141b] dark:text-gray-200 text-3xl font-bold leading-tight tracking-[-0.015em]"
+                >
+                  Undergoing Updates
+                </p>
+                <p
+                  class="text-slate-600 text-justify dark:text-slate-400 text-base font-normal leading-normal"
+                >
+                  We're currently making some improvements to enhance your
+                  experience. We appreciate your patience and will be back
+                  online shortly. For urgent inquiries, please connect on
+                  LinkedIn.
+                </p>
+              </div>
+            </div>
+            <div class="flex w-full max-w-sm flex-col gap-4">
+              <!-- <div class="flex flex-col gap-3">
+                <div class="rounded-full bg-slate-200 dark:bg-slate-700">
+                  <div
+                    class="h-2 rounded-full bg-primary"
+                    style="width: 75%"
+                  ></div>
+                </div> -->
+                <p
+                  class="text-md font-normal leading-normal text-slate-500 dark:text-slate-400"
+                  > <strong>
+                      Be back online shortly
+                  </strong>
+                </p>
+              </div>
+              <a
+                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+                href="https://www.linkedin.com/in/dr-c-h-patil/"
+              >
+                <span class="truncate">Connect on LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
