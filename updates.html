@@ -20,6 +20,59 @@
       .material-symbols-outlined {
         font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
       }
+      .updates-container {
+        animation: fadeInUp 0.8s ease-out;
+      }
+      .icon-pulse {
+        animation: pulse 2s infinite;
+      }
+      .text-slide {
+        animation: slideIn 1s ease-out 0.3s both;
+      }
+      .button-bounce {
+        animation: bounceIn 0.6s ease-out 0.8s both;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes bounceIn {
+        from {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
     </style>
     <script id="tailwind-config">
       tailwind.config = {
@@ -47,56 +100,30 @@
   </head>
   <body class="bg-background-light dark:bg-background-dark font-display">
     <div
-      class="relative flex min-h-screen w-full flex-col items-center justify-center p-4"
+      class="relative flex min-h-screen w-full flex-col items-center justify-center p-2 sm:p-4"
     >
       <div
         class="layout-container flex h-full grow flex-col items-center justify-center"
       >
         <div
-          class="layout-content-container flex flex-col max-w-[960px] flex-1 items-center justify-center text-center"
+          class="layout-content-container flex flex-col w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl items-center justify-center text-center px-4"
         >
-          <div class="flex flex-col items-center gap-8 px-4 py-6">
-            <div class="flex flex-col items-center gap-6">
-              <div
-                class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20"
-              >
-                <span class="material-symbols-outlined text-4xl text-primary"
-                  >build</span
-                >
-              </div>
-              <div class="flex max-w-[480px] flex-col items-center gap-2">
-                <p
-                  class="text-[#0e141b] dark:text-gray-200 text-3xl font-bold leading-tight tracking-[-0.015em]"
-                >
-                  Undergoing Updates
-                </p>
-                <p
-                  class="text-slate-600 text-justify dark:text-slate-400 text-base font-normal leading-normal"
-                >
-                  We're currently making some improvements to enhance your
-                  experience. We appreciate your patience and will be back
-                  online shortly. For urgent inquiries, please connect on
-                  LinkedIn.
-                </p>
-              </div>
+        <div class="updates-container flex flex-col items-center gap-4 sm:gap-6 px-4 sm:px-6 py-6 sm:py-8 border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 shadow-lg w-full">
+            <div class="icon-pulse flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+              <span class="material-symbols-outlined text-3xl sm:text-4xl text-primary">build</span>
             </div>
-            <div class="flex w-full max-w-sm flex-col gap-4">
-              <!-- <div class="flex flex-col gap-3">
-                <div class="rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div
-                    class="h-2 rounded-full bg-primary"
-                    style="width: 75%"
-                  ></div>
-                </div> -->
-                <p
-                  class="text-md font-normal leading-normal text-slate-500 dark:text-slate-400"
-                  > <strong>
-                      Be back online shortly
-                  </strong>
-                </p>
-              </div>
+            <div class="text-slide flex flex-col gap-3 sm:gap-4 text-center">
+              <p class="text-[#0e141b] dark:text-gray-200 text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em]">
+                Undergoing Updates
+              </p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base font-normal leading-normal">
+                We're currently making some improvements to enhance your experience. We appreciate your patience and will be back online shortly. For urgent inquiries, please connect on LinkedIn.
+              </p>
+              <p class="text-sm sm:text-md font-normal leading-normal text-slate-500 dark:text-slate-400">
+                <strong>Be back online shortly</strong>
+              </p>
               <a
-                class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors"
+                class="button-bounce flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 sm:h-12 px-4 bg-primary text-white text-sm sm:text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-all duration-300 hover:scale-105 hover:shadow-lg w-full"
                 href="https://www.linkedin.com/in/dr-c-h-patil/"
               >
                 <span class="truncate">Connect on LinkedIn</span>
