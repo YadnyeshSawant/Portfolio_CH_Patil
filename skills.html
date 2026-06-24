@@ -14,6 +14,29 @@
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+            },
+            fontFamily: {
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -77,44 +100,49 @@
             </a>
           </div>
 
-          <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
-            <div class="flex items-center gap-9">
+          <div class="hidden md:flex flex-1 justify-end gap-4 lg:gap-6 items-center">
+            <nav class="flex items-center gap-4 lg:gap-8 text-sm font-medium">
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="index.html"
+                >Home</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="about.html"
                 >About</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="patentsAndCopyrights.html"
                 >Patents/Copyrights</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="conference.html"
                 >Conference</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="publications.html"
                 >Publications</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="profiles.html"
                 >Research Profiles</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="skills.html"
                 >Skills</a
               >
               <a
-                class="text-[#0e141b] text-sm font-medium transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
                 href="contact.html"
                 >Contact</a
               >
-            </div>
+            </nav>
 
             <a
               href="resume.pdf"
@@ -144,7 +172,9 @@
               aria-label="Open navigation menu"
               onclick="toggleMobileMenu()"
             >
-              <span class="material-symbols-outlined text-sm">menu</span>
+              <svg class="size-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
             </button>
           </div>
         </header>
@@ -218,383 +248,300 @@
                 </p>
               </div>
             </div>
-            <h3
-              class="text-[#0e141b] text-xl sm:text-lg font-bold leading-tight tracking-[-0.015em] px-0 pb-2 pt-4"
-            >
-              Technical Skills
+            <!-- Section 1: Research Areas & Domain Expertise -->
+            <h3 class="text-[#0e141b] text-xl font-bold leading-tight tracking-[-0.015em] px-0 pb-3 pt-6 border-b border-slate-200 mb-4">
+              Research Areas &amp; Domain Expertise
             </h3>
-            <div
-              class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0"
-            >
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Code"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"
-                    ></path>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-0 mb-8">
+              
+              <!-- Digital Image Processing -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Programming Languages
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Python, JavaScript, Java
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Digital Image Processing</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Specialized in Handwritten Character &amp; Marathi Word Recognition, feature extraction, and dataset creation (Ph.D. specialization).
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Database"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M128,24C74.17,24,32,48.6,32,80v96c0,31.4,42.17,56,96,56s96-24.6,96-56V80C224,48.6,181.83,24,128,24Zm80,104c0,9.62-7.88,19.43-21.61,26.92C170.93,163.35,150.19,168,128,168s-42.93-4.65-58.39-13.08C55.88,147.43,48,137.62,48,128V111.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64ZM69.61,53.08C85.07,44.65,105.81,40,128,40s42.93,4.65,58.39,13.08C200.12,60.57,208,70.38,208,80s-7.88,19.43-21.61,26.92C170.93,115.35,150.19,120,128,120s-42.93-4.65-58.39-13.08C55.88,99.43,48,89.62,48,80S55.88,60.57,69.61,53.08ZM186.39,202.92C170.93,211.35,150.19,216,128,216s-42.93-4.65-58.39-13.08C55.88,195.43,48,185.62,48,176V159.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64V176C208,185.62,200.12,195.43,186.39,202.92Z"
-                    ></path>
+
+              <!-- NLP & Text Analytics -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.03z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Databases
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    MySQL, PostgreSQL, MongoDB
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Natural Language Processing</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Research in multilingual text detection, sentiment analysis reviews, and air-writing recognition algorithms.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Database"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M128,24C74.17,24,32,48.6,32,80v96c0,31.4,42.17,56,96,56s96-24.6,96-56V80C224,48.6,181.83,24,128,24Zm80,104c0,9.62-7.88,19.43-21.61,26.92C170.93,163.35,150.19,168,128,168s-42.93-4.65-58.39-13.08C55.88,147.43,48,137.62,48,128V111.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64ZM69.61,53.08C85.07,44.65,105.81,40,128,40s42.93,4.65,58.39,13.08C200.12,60.57,208,70.38,208,80s-7.88,19.43-21.61,26.92C170.93,115.35,150.19,120,128,120s-42.93-4.65-58.39-13.08C55.88,99.43,48,89.62,48,80S55.88,60.57,69.61,53.08ZM186.39,202.92C170.93,211.35,150.19,216,128,216s-42.93-4.65-58.39-13.08C55.88,195.43,48,185.62,48,176V159.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64V176C208,185.62,200.12,195.43,186.39,202.92Z"
-                    ></path>
+
+              <!-- Signal & Speech Recognition -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Backend Development
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Node.js, Express, Django
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Signal &amp; Speech Recognition</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Acoustic speech models using HMM, and speech emotion expressivity classifiers utilizing MFCC and CNN architectures.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Cloud"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Z"
-                    ></path>
+
+              <!-- Medical Image Computing -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Cloud Computing
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    AWS, Azure, GCP
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Medical Image Processing</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Deep learning classifiers for early lung cancer diagnosis, COVID-19 chest X-rays, and ultrasound scans.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Terminal"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M117.31,134l-72,64a8,8,0,1,1-10.63-12L100,128,34.69,70A8,8,0,1,1,45.32,58l72,64a8,8,0,0,1,0,12ZM216,184H120a8,8,0,0,0,0,16h96a8,8,0,0,0,0-16Z"
-                    ></path>
+
+              <!-- Data Mining & Warehousing -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V10.125M3.75 10.125v3.75m16.5-3.75v3.75m-16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0v3.75m-16.5-3.75v3.75" />
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    DevOps
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Docker, Kubernetes, CI/CD
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Data Mining &amp; Warehousing</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Pattern extraction, classification models, and database analysis on large-scale educational and research datasets.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="GitCommit"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M248,120H183.42a56,56,0,0,0-110.84,0H8a8,8,0,0,0,0,16H72.58a56,56,0,0,0,110.84,0H248a8,8,0,0,0,0-16ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"
-                    ></path>
+
+              <!-- Computer Networks -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185z" />
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Version Control
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Git, GitHub, GitLab
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Computer Networks</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Secure routing protocols, wireless sensor network optimization, and anomaly detection using LSTM frameworks.
                   </p>
                 </div>
               </div>
+
+              <!-- Design & Analysis of Algorithms -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.43l-1.003.828c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.954.26 1.43l-1.297 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.43l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 0 1 0-.255c.007-.378-.138-.75-.43-.991l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Algorithm Design</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Design of efficient computational models for pattern recognition, feature optimization, and biometric classification.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Software Engineering -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Software Engineering</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Object-oriented systems analysis, software project management, and structural design of robust academic IT solutions.
+                  </p>
+                </div>
+              </div>
+
             </div>
-            <h3
-              class="text-[#0e141b] text-xl sm:text-lg font-bold leading-tight tracking-[-0.015em] px-0 pb-2 pt-4"
-            >
-              Soft Skills
+
+            <!-- Section 2: Academic Leadership & Administration -->
+            <h3 class="text-[#0e141b] text-xl font-bold leading-tight tracking-[-0.015em] px-0 pb-3 pt-4 border-b border-slate-200 mb-4">
+              Academic Leadership &amp; Administration
             </h3>
-            <div
-              class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0"
-            >
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Presentation"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M216,40H136V24a8,8,0,0,0-16,0V40H40A16,16,0,0,0,24,56V176a16,16,0,0,0,16,16H79.36L57.75,219a8,8,0,0,0,12.5,10l29.59-37h56.32l29.59,37a8,8,0,1,0,12.5-10l-21.61-27H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,136H40V56H216V176Z"
-                    ></path>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-0 mb-8">
+              
+              <!-- Academic Administration -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008h-.008V6.75z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Communication
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Effective verbal and written communication
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Academic Administration</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Over 5+ years directing operations as Professor &amp; Dean at RV University, and Head of School of Computer Science at MIT-WPU.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Users"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"
-                    ></path>
+
+              <!-- Syllabus & Curriculum Design -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Collaboration
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Collaborating with cross-functional teams
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Curriculum Development</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Chairman &amp; Member of Board of Studies (BOS) across colleges, designing modern Computer Science syllabi.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Megaphone"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M240,120a48.05,48.05,0,0,0-48-48H152.2c-2.91-.17-53.62-3.74-101.91-44.24A16,16,0,0,0,24,40V200a16,16,0,0,0,26.29,12.25c37.77-31.68,77-40.76,93.71-43.3v31.72A16,16,0,0,0,151.12,214l11,7.33A16,16,0,0,0,186.5,212l11.77-44.36A48.07,48.07,0,0,0,240,120ZM40,199.93V40h0c42.81,35.91,86.63,45,104,47.24v65.48C126.65,155,82.84,164.07,40,199.93Zm131,8,0,.11-11-7.33V168h21.6ZM192,152H160V88h32a32,32,0,1,1,0,64Z"
-                    ></path>
+
+              <!-- Quality Assurance & IQAC -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Leadership
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Leading and mentoring team members
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Quality Assurance &amp; IQAC</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Member IQAC &amp; Coordinator for Teaching-Learning &amp; Evaluation in NAAC institutional accreditation processes.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Pencil"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM51.31,160,136,75.31,152.69,92,68,176.68ZM48,179.31,76.69,208H48Zm48,25.38L79.31,188,164,103.31,180.69,120Zm96-96L147.31,64l24-24L216,84.68Z"
-                    ></path>
+
+              <!-- Research Mentorship -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84a50.58 50.58 0 00-2.658.814m-15.482 0a50.697 50.697 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Problem Solving
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Analytical and creative problem-solving
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Research Guidance</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Approved Ph.D. guide. Successfully supervised 3 Ph.D. scholars (awarded) and led university research funding grants.
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="Clock"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"
-                    ></path>
+
+              <!-- Examination & Admissions Management -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Time Management
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Efficient task prioritization and time management
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Exam &amp; Admissions Chair</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Chairman of the Entrance Examination Committee, Admissions Convener, and former College Examination Officer (CEO).
                   </p>
                 </div>
               </div>
-              <div
-                class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col"
-              >
-                <div
-                  class="text-[#0e141b]"
-                  data-icon="UsersThree"
-                  data-size="24px"
-                  data-weight="regular"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24px"
-                    height="24px"
-                    fill="currentColor"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M244.8,150.4a8,8,0,0,1-11.2-1.6A51.6,51.6,0,0,0,192,128a8,8,0,0,1-7.37-4.89,8,8,0,0,1,0-6.22A8,8,0,0,1,192,112a24,24,0,1,0-23.24-30,8,8,0,1,1-15.5-4A40,40,0,1,1,219,117.51a67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,244.8,150.4ZM190.92,212a8,8,0,1,1-13.84,8,57,57,0,0,0-98.16,0,8,8,0,1,1-13.84-8,72.06,72.06,0,0,1,33.74-29.92,48,48,0,1,1,58.36,0A72.06,72.06,0,0,1,190.92,212ZM128,176a32,32,0,1,0-32-32A32,32,0,0,0,128,176ZM72,120a8,8,0,0,0-8-8A24,24,0,1,1,87.24,82a8,8,0,1,0,15.5-4A40,40,0,1,0,37,117.51,67.94,67.94,0,0,0,9.6,139.19a8,8,0,1,0,12.8,9.61A51.6,51.6,0,0,1,64,128,8,8,0,0,0,72,120Z"
-                    ></path>
+
+              <!-- Institutional ERP & Operations -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                   </svg>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <h2 class="text-[#0e141b] text-base font-bold leading-tight">
-                    Teamwork
-                  </h2>
-                  <p class="text-[#4e7397] text-sm font-normal leading-normal">
-                    Contributing to a positive and productive team environment
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">ERP &amp; Operations Coordinator</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    ERP Coordinator for Liberal Arts, Science and Commerce; Convener of Alumni Association and IT infrastructure projects.
                   </p>
                 </div>
               </div>
+
+            </div>
+
+            <!-- Section 3: Technical Tools & Soft Skills -->
+            <h3 class="text-[#0e141b] text-xl font-bold leading-tight tracking-[-0.015em] px-0 pb-3 pt-4 border-b border-slate-200 mb-4">
+              Technical Tools &amp; Key Abilities
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-0">
+              
+              <!-- Coding & SQL -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Programming &amp; SQL</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Proficient in Python, C, and SQL databases. Completed IBM's "SQL for Data Science" certification.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Typesetting (LaTeX) -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">LaTeX Typesetting</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Expert in typeset layouts for Scopus journal submissions, IEEE formats, conference papers, and book chapters.
+                  </p>
+                </div>
+              </div>
+
+              <!-- AI & Deep Learning Architectures -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.008v.008H12V18zm0-3h.008v.008H12V15zm0-3h.008v.008H12V12zm0-3h.008v.008H12V9zm0-3h.008v.008H12V6zm9 12h.008v.008H21V18zm0-3h.008v.008H21V15zm0-3h.008v.008H21V12zm0-3h.008v.008H21V9zm0-3h.008v.008H21V6zM3 18h.008v.008H3V18zm0-3h.008v.008H3V15zm0-3h.008v.008H3V12zm0-3h.008v.008H3V9zm0-3h.008v.008H3V6zm3 14h12c1.105 0 2-.895 2-2V6c0-1.105-.895-2-2-2H6c-1.105 0-2 .895-2 2v12c0 1.105.895 2 2 2z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">AI &amp; Deep Learning</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Practical research application of CNN, LSTM, ResNet-18, HMM, and SVM models for character, speech, and medical images.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Public Speaking & Keynotes -->
+              <div class="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-5 hover:border-primary hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                <div class="bg-blue-50 text-primary p-3 rounded-xl w-12 h-12 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <svg class="size-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                  </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h4 class="text-[#0e141b] text-base font-bold leading-tight">Public Speaking</h4>
+                  <p class="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    Keynote speaker and resource person for UGC refresher programs, Syllabus Workshops, and NET/SET preparation.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
