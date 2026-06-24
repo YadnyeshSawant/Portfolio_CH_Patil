@@ -26,14 +26,22 @@
     </style>
     <script id="tailwind-config">
       tailwind.config = {
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
               primary: "#197fe6",
               "background-light": "#f6f7f8",
+              "background-dark": "#111921",
             },
             fontFamily: {
-              display: ["Inter", "sans-serif"],
+              display: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
             },
           },
         },
@@ -46,11 +54,60 @@
           menu.classList.toggle('hidden');
         }
       }
+
+      function filterInnovations(category) {
+        // Toggle tab active styles
+        const tabs = document.querySelectorAll('.filter-tab');
+        tabs.forEach(tab => {
+          tab.classList.remove('bg-[#1980e6]', 'text-white', 'shadow-md');
+          tab.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+        });
+        
+        const activeTab = document.getElementById('tab-' + category);
+        if (activeTab) {
+          activeTab.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+          activeTab.classList.add('bg-[#1980e6]', 'text-white', 'shadow-md');
+        }
+
+        // Filter cards
+        const cards = document.querySelectorAll('.innovation-card');
+        const sections = document.querySelectorAll('.year-section');
+        
+        // Show/hide based on category
+        cards.forEach(card => {
+          if (category === 'all') {
+            card.classList.remove('hidden');
+          } else if (category === 'patents') {
+            if (card.classList.contains('patent-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          } else if (category === 'copyrights') {
+            if (card.classList.contains('copyright-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+
+        // Hide empty year sections
+        sections.forEach(sec => {
+          const visibleCards = sec.querySelectorAll('.innovation-card:not(.hidden)');
+          if (visibleCards.length === 0) {
+            sec.classList.add('hidden');
+          } else {
+            sec.classList.remove('hidden');
+          }
+        });
+      }
     </script>
   </head>
   <body>
     <div class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
       <div class="layout-container flex h-full grow flex-col">
+        <!-- HEADER -->
         <header class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-4 sm:px-6 lg:px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg">
           <div class="flex items-center gap-4 text-[#0e141b] group">
             <div class="size-4 sm:size-5 transition-transform duration-300 ease-in-out group-hover:rotate-12">
@@ -132,9 +189,11 @@
             <button
               type="button"
               class="inline-flex items-center justify-center rounded-md p-2 border border-slate-200 bg-white text-slate-700 hover:bg-[#e6f0ff] hover:border-[#1980e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1980e6] h-7"
-              onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+              onclick="toggleMobileMenu()"
             >
-              <span class="material-symbols-outlined text-sm">menu</span>
+              <svg class="size-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
             </button>
           </div>
         </header>
@@ -186,567 +245,429 @@
             >
           </nav>
         </div>
-        
-        <div class="px-4 sm:px-6 md:px-20 lg:px-40 flex flex-1 justify-center py-5 pt-[64px] sm:pt-[72px]">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <main class="flex flex-col gap-8 p-0 sm:p-10">
-              <div class="flex flex-wrap justify-between gap-3 pt-4">
-                <h1
-                  class="text-slate-900 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em] min-w-72"
-                >
-                  Patents
-                </h1>
-              </div>
-              <div class="flex flex-col sm:flex-row flex-wrap gap-4">
-                <div
-                  class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white border border-slate-200"
-                >
-                  <p
-                    class="text-slate-600 text-base font-medium leading-normal"
-                  >
-                    Total Granted
-                  </p>
-                  <p
-                    class="text-slate-900 tracking-tight text-3xl font-bold leading-tight"
-                  >
-                    5
-                  </p>
+
+        <!-- MAIN LAYOUT WRAPPER -->
+        <div class="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5 pt-[64px] sm:pt-[72px]">
+          <div class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-8">
+            
+            <!-- PAGE TITLE -->
+            <div class="flex flex-col gap-2 pt-6">
+              <h1 class="text-slate-900 tracking-tight text-3xl sm:text-4xl font-black leading-tight">
+                Patents &amp; Copyrights
+              </h1>
+              <p class="text-slate-500 text-sm sm:text-base leading-normal">
+                A showcase of research innovations, intellectual properties, and registered digital works.
+              </p>
+            </div>
+
+            <!-- DASHBOARD METRICS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+              <!-- Patents Summary -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-slate-800 text-lg font-bold">Patents Overview</h3>
+                  <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">8 Total</span>
                 </div>
-                <div
-                  class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white border border-slate-200"
-                >
-                  <p
-                    class="text-slate-600 text-base font-medium leading-normal"
-                  >
-                    Total Published
-                  </p>
-                  <p
-                    class="text-slate-900 tracking-tight text-3xl font-bold leading-tight"
-                  >
-                    3
-                  </p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-4">
-                  <h2
-                    class="text-slate-900 text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] pt-5 border-t border-slate-200"
-                  >
-                    2024
-                  </h2>
-                  <div
-                    class="flex flex-col divide-y divide-slate-200 bg-white border border-slate-200 rounded-xl overflow-hidden"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >A MODULAR INTERNET OF THINGS-ENABLED TABLET AND
-                            CAPSULE DISPENSER DEVICE</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 202421028033, Indian Patent, 19
-                            April 2024
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, Sachin Bhoite, Amol
-                            Tagalpallewar, Akshay Baheti, Anil Pawar, Harshali
-                            Patil.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >AUTOMATED HOMOEOPATHIC MEDICATION DISPENSER AND
-                            METHOD OF DISPENSING THEREOF</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 202421021226, Indian Patent, 19
-                            April 2024
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, Sachin Bhoite, Amol
-                            Tagalpallewar, Akshay Baheti, Anil Pawar, Harshali
-                            Patil.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Published</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >IoT Based Waste Disposer</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 406096-001, Indian Design Patent, 30 January 2024
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: Harshali Patil, C. H. Patil, Meenal Jabde, Bhagyashree Padhyar.
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Published</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start">
-                      <div class="flex items-start gap-4">
-                        <div class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12">
-                          <span class="material-symbols-outlined">description</span>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors" href="#">ARTIFICIAL INTELLIGENCE BASED CROP HARVESTING AGRICULTURE ROBOT</a>
-                          <p class="text-slate-500 text-sm font-normal leading-normal">
-                            Application Number – 405446-001, Indian Design Patent, 23 January 2024
-                          </p>
-                          <p class="text-slate-500 text-sm font-normal leading-normal">
-                            Authors: C. H. Patil, S. M. Mali, Aniket Nagane, Harshali Patil.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="shrink-0 flex items-center justify-center pt-1">
-                        <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700">
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Published</span>
-                        </div>
-                      </div>
-                    </div>
+                <div class="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
+                  <div class="flex flex-col">
+                    <span class="text-slate-500 text-xs font-medium uppercase tracking-wider">Granted</span>
+                    <span class="text-green-600 text-3xl font-black mt-1">5</span>
                   </div>
-                </div>
-                <div class="flex flex-col gap-4">
-                  <h2
-                    class="text-slate-900 text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] pt-5 border-t border-slate-200"
-                  >
-                    2023
-                  </h2>
-                  <div
-                    class="flex flex-col divide-y divide-slate-200 bg-white border border-slate-200 rounded-xl overflow-hidden"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >INTELLIGENT BIOSENSOR DEVICE FOR EARLY DETECTION OF LUNG CANCER</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 6241365, UK Design Patent, 12 September 2023
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: Amol Vibhute, Minhaj Khan, C. H. Patil, K. K. Patel. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                </div>
-                <div class="flex flex-col gap-4">
-                  <h2
-                    class="text-slate-900 text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] pt-5 border-t border-slate-200"
-                  >
-                    2022
-                  </h2>
-                  <div
-                    class="flex flex-col divide-y divide-slate-200 bg-white border border-slate-200 rounded-xl overflow-hidden"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >IoT-based intelligent parking management system and a Method Thereof</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 202221062435, Indian Patent, 2 November, 2022
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, Shankar Mali, Amol Vibhute, Sachin Bhoite, Harshali Patil, Pushkar Parmar, Shohrat Ali, Shubham Modi. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >A SMART HOME MANAGEMENT SYSTEM AND A METHOD THEREOF</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 21/01/2022/01420, Republic of South Africa utility Patent, 29 June 2022
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, Amol Vibhute, S. M. Mali, Ashin Varghese, Shiva Vyas, Jatin Pakhrani. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col gap-4">
-                  <h2
-                    class="text-slate-900 text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] pt-5 border-t border-slate-200"
-                  >
-                    2021
-                  </h2>
-                  <div
-                    class="flex flex-col divide-y divide-slate-200 bg-white border border-slate-200 rounded-xl overflow-hidden"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="#"
-                            >MEDICAL DISPENSER</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Application Number - 345468-001, Indian Design Patent, 29 June 2021
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: Amol Tagalpallewar, Akshay Baheti, Dnyanesh Limaye, C. H. Patil, Mehul Sherdiwala, Nakia Lightwala. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="flex flex-col">
+                    <span class="text-slate-500 text-xs font-medium uppercase tracking-wider">Published</span>
+                    <span class="text-amber-500 text-3xl font-black mt-1">3</span>
                   </div>
                 </div>
               </div>
-            </main>
-          </div>
-        </div>
-        <div class="px-4 sm:px-6 md:px-20 lg:px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <main class="flex flex-col gap-8 p-0 sm:p-10">
-              <div class="flex flex-wrap justify-between gap-3 pt-4">
-                <h1
-                  class="text-slate-900 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em] min-w-72"
-                >
-                  Copyrights
-                </h1>
-              </div>
-              <div class="flex flex-col sm:flex-row flex-wrap gap-4">
-                <div
-                  class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white border border-slate-200"
-                >
-                  <p
-                    class="text-slate-600 text-base font-medium leading-normal"
-                  >
-                    Total Granted
-                  </p>
-                  <p
-                    class="text-slate-900 tracking-tight text-3xl font-bold leading-tight"
-                  >
-                    2
-                  </p>
+
+              <!-- Copyrights Summary -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-slate-800 text-lg font-bold">Copyrights Overview</h3>
+                  <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">3 Total</span>
                 </div>
-                <div
-                  class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-6 bg-white border border-slate-200"
-                >
-                  <p
-                    class="text-slate-600 text-base font-medium leading-normal"
-                  >
-                    Total Published
-                  </p>
-                  <p
-                    class="text-slate-900 tracking-tight text-3xl font-bold leading-tight"
-                  >
-                    1
-                  </p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-4">
-                  <h2
-                    class="text-slate-900 text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] pt-5 border-t border-slate-200"
-                  >
-                    2022
-                  </h2>
-                  <div
-                    class="flex flex-col divide-y divide-slate-200 bg-white border border-slate-200 rounded-xl overflow-hidden"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="https://copyright.gov.in/frmStatusGenUser.aspx" target="_blank"
-                            >Format for Computer Science/Application Post Graduate Students for Industrial Internship Report</a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Diary Number - 16583/2022-CO/L, 4 August 2022
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, S. M. Mali, Harshali Patil. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start"
-                    >
-                      <div class="flex items-start gap-4">
-                        <div
-                          class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12"
-                        >
-                          <span class="material-symbols-outlined"
-                            >description</span
-                          >
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a
-                            class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors"
-                            href="https://copyright.gov.in/frmStatusGenUser.aspx" target="_blank"
-                            >Personal Academic Website for Dr. Chandrashekhar Himmatrao Patil </a
-                          >
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Diary Number - 17292/2022-CO/L, 17 August 2022
-                          </p>
-                          <p
-                            class="text-slate-500 text-sm font-normal leading-normal"
-                          >
-                            Authors: C. H. Patil, S. M. Mali, Harshali Patil, Amol Vibhute, Vansh Duggar. 
-                          </p>
-                        </div>
-                      </div>
-                      <div
-                        class="shrink-0 flex items-center justify-center pt-1"
-                      >
-                        <div
-                          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700"
-                        >
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Published</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4 px-6 py-5 justify-between items-start">
-                      <div class="flex items-start gap-4">
-                        <div class="text-slate-500 flex items-center justify-center rounded-lg bg-slate-100 shrink-0 size-12">
-                          <span class="material-symbols-outlined">description</span>
-                        </div>
-                        <div class="flex flex-1 flex-col justify-center gap-1">
-                          <a class="text-slate-900 text-base font-medium leading-normal hover:text-primary transition-colors" href="#">Architecture of Entrance Examination for Undergraduate and Post graduate at Dr. Vishwanath Karad MIT World Peace University Pune</a>
-                          <p class="text-slate-500 text-sm font-normal leading-normal">
-                            Application Number - 2920/2022-CO/L, 5 April 2022
-                          </p>
-                          <p class="text-slate-500 text-sm font-normal leading-normal">
-                            Authors: Uttam Padwal, C. H. Patil, Pradip Padhye. 
-                          </p>
-                        </div>
-                      </div>
-                      <div class="shrink-0 flex items-center justify-center pt-1">
-                        <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-green-100 text-green-700">
-                          <div class="size-2 rounded-full bg-current"></div>
-                          <span class="text-xs font-medium">Granted</span>
-                        </div>
-                      </div>
-                    </div>
+                <div class="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
+                  <div class="flex flex-col">
+                    <span class="text-slate-500 text-xs font-medium uppercase tracking-wider">Granted</span>
+                    <span class="text-green-600 text-3xl font-black mt-1">2</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-slate-500 text-xs font-medium uppercase tracking-wider">Published</span>
+                    <span class="text-amber-500 text-3xl font-black mt-1">1</span>
                   </div>
                 </div>
               </div>
-            </main>
+            </div>
+
+            <!-- FILTER TABS -->
+            <div class="flex items-center justify-start border-b border-slate-200 pb-1 overflow-x-auto gap-2">
+              <button
+                type="button"
+                id="tab-all"
+                onclick="filterInnovations('all')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-[#1980e6] text-white shadow-md transition-all duration-300 hover:scale-105"
+              >
+                All Records (11)
+              </button>
+              <button
+                type="button"
+                id="tab-patents"
+                onclick="filterInnovations('patents')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Patents (8)
+              </button>
+              <button
+                type="button"
+                id="tab-copyrights"
+                onclick="filterInnovations('copyrights')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Copyrights (3)
+              </button>
+            </div>
+
+            <!-- INNOVATIONS LIST -->
+            <div class="flex flex-col gap-8 mb-12">
+              
+              <!-- 2024 Innovations -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">2024</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Patent 1 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Smart Medical Capsule -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m-4.5-9h9M7.5 7.5h9a4.5 4.5 0 014.5 4.5v0a4.5 4.5 0 01-4.5 4.5h-9A4.5 4.5 0 013 12v0a4.5 4.5 0 014.5-4.5z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A MODULAR INTERNET OF THINGS-ENABLED TABLET AND CAPSULE DISPENSER DEVICE
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Published
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">202421028033</span> &bull; Indian Patent &bull; 19 April 2024
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, Sachin Bhoite, Amol Tagalpallewar, Akshay Baheti, Anil Pawar, Harshali Patil.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Patent 2 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Medicine Bottle -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3h4.5m-4.5 3h4.5M6 9h12v10.5a2.25 2.25 0 01-2.25 2.25h-7.5A2.25 2.25 0 016 19.5V9z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 13.5v3m-1.5-1.5h3" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          AUTOMATED HOMOEOPATHIC MEDICATION DISPENSER AND METHOD OF DISPENSING THEREOF
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">202421021226</span> &bull; Indian Patent &bull; 19 April 2024
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, Sachin Bhoite, Amol Tagalpallewar, Akshay Baheti, Anil Pawar, Harshali Patil.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Patent 3 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Recycle Disposer -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          IoT Based Waste Disposer
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Published
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">406096-001</span> &bull; Indian Design Patent &bull; 30 January 2024
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> Harshali Patil, C. H. Patil, Meenal Jabde, Bhagyashree Padhyar.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Patent 4 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- AI Crop Robot -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m10.5a3.75 3.75 0 11-7.5 0h7.5zm.75 12h-9a1.5 1.5 0 01-1.5-1.5v-6a1.5 1.5 0 011.5-1.5h9a1.5 1.5 0 011.5 1.5v6a1.5 1.5 0 01-1.5 1.5z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          ARTIFICIAL INTELLIGENCE BASED CROP HARVESTING AGRICULTURE ROBOT
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Published
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">405446-001</span> &bull; Indian Design Patent &bull; 23 January 2024
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, S. M. Mali, Aniket Nagane, Harshali Patil.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- 2023 Innovations -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">2023</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Patent 5 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Lung cancer sensor -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.03a11.95 11.95 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016a11.95 11.95 0 01-8.618-3.04z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          INTELLIGENT BIOSENSOR DEVICE FOR EARLY DETECTION OF LUNG CANCER
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">6241365</span> &bull; UK Design Patent &bull; 12 September 2023
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> Amol Vibhute, Minhaj Khan, C. H. Patil, K. K. Patel.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- 2022 Innovations -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">2022</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Patent 6 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Smart Parking -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h7.5m3 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-6-1.5h10.5m-12.75-3h15m-.75-6.75H5.25L3 11.25v3.75h18v-3.75l-2.25-6.75z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          IoT-based intelligent parking management system and a Method Thereof
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">202221062435</span> &bull; Indian Patent &bull; 2 November 2022
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, Shankar Mali, Amol Vibhute, Sachin Bhoite, Harshali Patil, Pushkar Parmar, Shohrat Ali, Shubham Modi.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Patent 7 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Smart Home -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A SMART HOME MANAGEMENT SYSTEM AND A METHOD THEREOF
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">21/01/2022/01420</span> &bull; Republic of South Africa utility Patent &bull; 29 June 2022
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, Amol Vibhute, S. M. Mali, Ashin Varghese, Shiva Vyas, Jatin Pakhrani.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Copyright 1 -->
+                  <div class="innovation-card copyright-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-50 text-[#5E33BF] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#5E33BF] group-hover:text-white transition-colors duration-300">
+                      <!-- Book/Internship Standard -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          <a href="https://copyright.gov.in/frmStatusGenUser.aspx" target="_blank" class="hover:text-primary transition-colors">
+                            Format for Computer Science/Application Post Graduate Students for Industrial Internship Report
+                          </a>
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Diary Number: <span class="text-slate-700 font-mono">16583/2022-CO/L</span> &bull; Copyright Work &bull; 4 August 2022
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, S. M. Mali, Harshali Patil.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Copyright 2 -->
+                  <div class="innovation-card copyright-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-50 text-[#5E33BF] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#5E33BF] group-hover:text-white transition-colors duration-300">
+                      <!-- Web layout -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21V1.25M3.284 14.253a9 9 0 0017.432 0M3.284 14.253h17.432" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          <a href="https://copyright.gov.in/frmStatusGenUser.aspx" target="_blank" class="hover:text-primary transition-colors">
+                            Personal Academic Website for Dr. Chandrashekhar Himmatrao Patil
+                          </a>
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 ring-1 ring-inset ring-yellow-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-yellow-500"></span>
+                          Published
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Diary Number: <span class="text-slate-700 font-mono">17292/2022-CO/L</span> &bull; Copyright Work &bull; 17 August 2022
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> C. H. Patil, S. M. Mali, Harshali Patil, Amol Vibhute, Vansh Duggar.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Copyright 3 -->
+                  <div class="innovation-card copyright-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-indigo-50 text-[#5E33BF] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#5E33BF] group-hover:text-white transition-colors duration-300">
+                      <!-- College Exam Security / Shield -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Architecture of Entrance Examination for Undergraduate and Post graduate at Dr. Vishwanath Karad MIT World Peace University Pune
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">2920/2022-CO/L</span> &bull; Copyright Work &bull; 5 April 2022
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> Uttam Padwal, C. H. Patil, Pradip Padhye.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- 2021 Innovations -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">2021</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Patent 8 -->
+                  <div class="innovation-card patent-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <!-- Medical Dispenser -->
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6m-9 3h18a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0019.5 3H4.5A2.25 2.25 0 002.25 5.25v13.5A2.25 2.25 0 004.5 21z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          MEDICAL DISPENSER
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-green-50 text-green-700 ring-1 ring-inset ring-green-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-green-500"></span>
+                          Granted
+                        </span>
+                      </div>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Application Number: <span class="text-slate-700 font-mono">345468-001</span> &bull; Indian Design Patent &bull; 29 June 2021
+                      </p>
+                      <p class="text-slate-600 text-sm leading-relaxed mt-1">
+                        <strong class="text-slate-800">Authors:</strong> Amol Tagalpallewar, Akshay Baheti, Dnyanesh Limaye, C. H. Patil, Mehul Sherdiwala, Nakia Lightwala.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-
   </body>
 </html>

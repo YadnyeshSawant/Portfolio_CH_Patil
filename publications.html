@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Publications</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title>Publications - Dr. C.H.Patil</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
+    <style>
+      .pub-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -25,7 +30,7 @@
               "background-dark": "#111921",
             },
             fontFamily: {
-              display: ["Inter", "sans-serif"],
+              display: ["Inter"],
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -37,12 +42,6 @@
         },
       };
     </script>
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-        font-size: 20px;
-      }
-    </style>
     <script>
       function toggleMobileMenu() {
         const menu = document.getElementById('mobile-menu');
@@ -50,1375 +49,1307 @@
           menu.classList.toggle('hidden');
         }
       }
+
+      function filterPublications(category) {
+        // Toggle tab active styles
+        const tabs = document.querySelectorAll('.filter-tab');
+        tabs.forEach(tab => {
+          tab.classList.remove('bg-[#1980e6]', 'text-white', 'shadow-md');
+          tab.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+        });
+        
+        const activeTab = document.getElementById('tab-' + category);
+        if (activeTab) {
+          activeTab.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+          activeTab.classList.add('bg-[#1980e6]', 'text-white', 'shadow-md');
+        }
+
+        // Filter cards
+        const cards = document.querySelectorAll('.pub-card');
+        const sections = document.querySelectorAll('.year-section');
+        const bookChapterSection = document.getElementById('book-chapter-section');
+        
+        cards.forEach(card => {
+          if (category === 'all') {
+            card.classList.remove('hidden');
+          } else if (category === 'q1') {
+            if (card.classList.contains('q1-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          } else if (category === 'q2') {
+            if (card.classList.contains('q2-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          } else if (category === 'q3-other') {
+            if (card.classList.contains('q3-card') || card.classList.contains('scopus-card') || card.classList.contains('peer-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          } else if (category === 'book') {
+            if (card.classList.contains('book-chapter-card')) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+
+        // Hide empty year sections
+        sections.forEach(sec => {
+          const visibleCards = sec.querySelectorAll('.pub-card:not(.hidden)');
+          if (visibleCards.length === 0) {
+            sec.classList.add('hidden');
+          } else {
+            sec.classList.remove('hidden');
+          }
+        });
+
+        // Hide/Show book chapter section depending on category
+        if (bookChapterSection) {
+          if (category === 'all' || category === 'book') {
+            bookChapterSection.classList.remove('hidden');
+          } else {
+            bookChapterSection.classList.add('hidden');
+          }
+        }
+      }
     </script>
   </head>
-  <body
-    class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200"
-  >
-    <div
-      class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden"
-    >
-      <header
-        class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-4 sm:px-6 lg:px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg"
-      >
-        <div class="flex items-center gap-4 text-[#0e141b] group">
-          <div
-            class="size-4 transition-transform duration-300 ease-in-out group-hover:rotate-12"
-          >
-            <svg
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_6_319)">
-                <path
-                  d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                  fill="currentColor"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_6_319">
-                  <rect width="48" height="48" fill="white"></rect>
-                </clipPath>
-              </defs>
-            </svg>
+  <body>
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <!-- HEADER -->
+        <header class="fixed top-0 left-0 right-0 z-30 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-4 sm:px-6 lg:px-10 py-3 bg-white shadow-sm transition-all duration-300 ease-in-out hover:bg-[#f3f8ff] hover:shadow-lg">
+          <div class="flex items-center gap-4 text-[#0e141b] group">
+            <div class="size-4 sm:size-5 transition-transform duration-300 ease-in-out group-hover:rotate-12">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_319)">
+                  <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <a href="index.html" class="transition-transform duration-300 ease-in-out hover:scale-105">
+              <h2 class="text-[#0e141b] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]">
+                Dr. C.H.Patil
+              </h2>
+            </a>
           </div>
-          <a
-            href="index.html"
-            class="transition-transform duration-300 ease-in-out hover:scale-105"
-          >
-            <h2
-              class="text-[#0e141b] text-base sm:text-lg font-bold leading-tight tracking-[-0.015em]"
-            >
-              Dr. C.H.Patil
-            </h2>
-          </a>
-        </div>
 
-        <div class="hidden md:flex flex-1 justify-end gap-4 lg:gap-6 items-center">
-          <nav class="flex items-center gap-4 lg:gap-8 text-sm font-medium">
+          <div class="hidden md:flex flex-1 justify-end gap-4 lg:gap-6 items-center">
+            <nav class="flex items-center gap-4 lg:gap-8 text-sm font-medium">
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="index.html"
+                >Home</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="about.html"
+                >About</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="patentsAndCopyrights.html"
+                >Patents/Copyrights</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="conference.html"
+                >Conference</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="publications.html"
+                >Publications</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="profiles.html"
+                >Research Profiles</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="skills.html"
+                >Skills</a
+              >
+              <a
+                class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+                href="contact.html"
+                >Contact</a
+              >
+            </nav>
+
+            <a href="resume.pdf" target="_blank" class="flex min-w-[84px] items-center justify-center rounded-lg h-7 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md">
+              <span class="truncate">Resume</span>
+            </a>
+
+            <div class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2" style="background-image: url('1516640279911.jpeg')"></div>
+          </div>
+
+          <div class="flex md:hidden items-center gap-2">
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              href="resume.pdf"
+              target="_blank"
+              class="flex items-center justify-center rounded-md h-7 px-3 bg-[#1980e6] text-white text-xs font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
+            >
+              Resume
+            </a>
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-md p-2 border border-slate-200 bg-white text-slate-700 hover:bg-[#e6f0ff] hover:border-[#1980e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1980e6] h-7"
+              onclick="toggleMobileMenu()"
+            >
+              <svg class="size-4 text-slate-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <div
+          id="mobile-menu"
+          class="md:hidden fixed top-[56px] sm:top-[64px] left-0 right-0 z-20 bg-white border-b border-slate-200 shadow-sm hidden"
+        >
+          <nav class="flex flex-col px-4 py-3 gap-2 text-sm font-medium">
+            <a
               href="index.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >Home</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="about.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >About</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="patentsAndCopyrights.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >Patents/Copyrights</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="conference.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >Conference</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="publications.html"
+              class="rounded-md px-3 py-2 bg-slate-100 text-slate-900 hover:bg-[#e6f0ff] transition-colors"
               >Publications</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               href="profiles.html"
               >Research Profiles</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="skills.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >Skills</a
             >
             <a
-              class="text-[#0e141b] transition-all duration-300 hover:text-[#1980e6] hover:bg-[#e6f0ff] hover:rounded-md hover:px-2 hover:py-1"
               href="contact.html"
+              class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
               >Contact</a
             >
           </nav>
-
-          <a
-            href="resume.pdf"
-            target="_blank"
-            class="flex min-w-[84px] items-center justify-center rounded-lg h-7 px-4 bg-[#1980e6] text-white text-sm font-bold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
-          >
-            <span class="truncate">Resume</span>
-          </a>
-
-          <div
-            class="bg-center bg-cover rounded-full size-10 transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-[#1980e6] hover:ring-offset-2"
-            style="background-image: url('1516640279911.jpeg')"
-          ></div>
         </div>
 
-        <div class="flex md:hidden items-center gap-2">
-          <a
-            href="resume.pdf"
-            target="_blank"
-            class="flex items-center justify-center rounded-md h-7 px-3 bg-[#1980e6] text-white text-xs font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#0f5ec1] hover:shadow-md"
-          >
-            Resume
-          </a>
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 border border-slate-200 bg-white text-slate-700 hover:bg-[#e6f0ff] hover:border-[#1980e6] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1980e6] h-7"
-            aria-label="Open navigation menu"
-            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-          >
-            <span class="material-symbols-outlined text-sm">menu</span>
-          </button>
-        </div>
-        
-      </header>
-
-      <div
-        id="mobile-menu"
-        class="md:hidden fixed top-[56px] sm:top-[64px] left-0 right-0 z-20 bg-white border-b border-slate-200 shadow-sm hidden"
-      >
-        <nav class="flex flex-col px-4 py-3 gap-2 text-sm font-medium">
-          <a
-            href="index.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >Home</a
-          >
-          <a
-            href="about.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >About</a
-          >
-          <a
-            href="patentsAndCopyrights.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >Patents/Copyrights</a
-          >
-          <a
-            href="conference.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >Conference</a
-          >
-          <a
-            href="publications.html"
-            class="rounded-md px-3 py-2 bg-slate-100 text-slate-900 hover:bg-[#e6f0ff] transition-colors"
-            >Publications</a
-          >
-          <a
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            href="profiles.html"
-            >Research Profiles</a
-          >
-          <a
-            href="skills.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >Skills</a
-          >
-          <a
-            href="contact.html"
-            class="rounded-md px-3 py-2 text-slate-700 hover:bg-[#e6f0ff] transition-colors"
-            >Contact</a
-          >
-        </nav>
-      </div>
-
-      <div class="layout-container flex h-full grow flex-col pt-[64px] sm:pt-[72px]">
-        <div
-          class="px-4 md:px-20 lg:px-40 flex flex-1 justify-center py-5 sm:py-10"
-        >
-          <div
-            class="layout-content-container flex flex-col max-w-[960px] flex-1"
-          >
-            <div class="flex flex-wrap justify-between gap-3 p-4">
-              <h1
-                class="text-gray-900 dark:text-white text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em] min-w-72"
-              >
+        <!-- MAIN LAYOUT WRAPPER -->
+        <div class="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-5 pt-[64px] sm:pt-[72px]">
+          <div class="layout-content-container flex flex-col max-w-[1200px] flex-1 gap-8">
+            
+            <!-- PAGE TITLE -->
+            <div class="flex flex-col gap-2 pt-6">
+              <h1 class="text-slate-900 tracking-tight text-3xl sm:text-4xl font-black leading-tight">
                 Publications
               </h1>
+              <p class="text-slate-500 text-sm sm:text-base leading-normal">
+                Academic publications, peer-reviewed international journals, and book chapters indexing advanced research in Deep Learning, IoT, and Computer Vision.
+              </p>
             </div>
-            <h2
-              class="text-gray-900 dark:text-white text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 mt-4"
-            >
-              International Journal Publications (Total 22)
-            </h2>
-            <div class="flex flex-col p-4">
-              <details
-                class="flex flex-col border-t border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
+
+            <!-- DASHBOARD METRICS -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 w-full">
+              <!-- Metric 1: Total Publications -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Total Pubs</span>
+                <span class="text-slate-900 text-2xl sm:text-3xl font-black mt-2">27</span>
+              </div>
+              <!-- Metric 2: Q1 Journals -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Q1 Index</span>
+                  <span class="size-2 rounded-full bg-emerald-500"></span>
+                </div>
+                <span class="text-emerald-600 text-2xl sm:text-3xl font-black mt-2">8</span>
+              </div>
+              <!-- Metric 3: Q2 Journals -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Q2 Index</span>
+                  <span class="size-2 rounded-full bg-cyan-500"></span>
+                </div>
+                <span class="text-cyan-600 text-2xl sm:text-3xl font-black mt-2">5</span>
+              </div>
+              <!-- Metric 4: Q3 & Others -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Q3 / Peer</span>
+                  <span class="size-2 rounded-full bg-amber-500"></span>
+                </div>
+                <span class="text-amber-600 text-2xl sm:text-3xl font-black mt-2">12</span>
+              </div>
+              <!-- Metric 5: Book Chapters -->
+              <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow col-span-2 md:col-span-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Chapters</span>
+                  <span class="size-2 rounded-full bg-indigo-500"></span>
+                </div>
+                <span class="text-indigo-600 text-2xl sm:text-3xl font-black mt-2">2</span>
+              </div>
+            </div>
+
+            <!-- FILTER TABS -->
+            <div class="flex items-center justify-start border-b border-slate-200 pb-1 overflow-x-auto gap-2">
+              <button
+                type="button"
+                id="tab-all"
+                onclick="filterPublications('all')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-[#1980e6] text-white shadow-md transition-all duration-300 hover:scale-105"
               >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2025-2026 (Q1-2, Q2-3, Q3-4)
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Deep Learning Architectures for Tennis Action Recognition: Benchmark for Cross-Sport Video Analysis
+                All Records (27)
+              </button>
+              <button
+                type="button"
+                id="tab-q1"
+                onclick="filterPublications('q1')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Q1 Index (8)
+              </button>
+              <button
+                type="button"
+                id="tab-q2"
+                onclick="filterPublications('q2')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Q2 Index (5)
+              </button>
+              <button
+                type="button"
+                id="tab-q3-other"
+                onclick="filterPublications('q3-other')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Q3 &amp; Others (12)
+              </button>
+              <button
+                type="button"
+                id="tab-book"
+                onclick="filterPublications('book')"
+                class="filter-tab min-w-[120px] text-center rounded-full px-5 py-2.5 text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-[#1980e6] hover:bg-slate-50 transition-all duration-300 hover:scale-105"
+              >
+                Book Chapters (2)
+              </button>
+            </div>
+
+            <!-- PUBLICATIONS LIST -->
+            <div class="flex flex-col gap-8 mb-12">
+
+              <!-- Academic Year 2025-2026 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2025-2026</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card q2-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Deep Learning Architectures for Tennis Action Recognition: Benchmark for Cross-Sport Video Analysis
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-cyan-500"></span>
+                          Q2
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mandar Parale, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Shankar Mali (1 Feb 2026)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mandar Parale, <b>C. H. Patil</b>, Shankar Mali (1 Feb 2026)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Journal of Sports Engineering and Technology
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200"
-                        >Q2</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://rdcu.be/e1NvV"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://rdcu.be/e1NvV" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Air writing character recognition systems – A systematic review
+
+                  <!-- Pub 2 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Air writing character recognition systems – A systematic review
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Ashish Garud, Shankar Mali, <strong class="text-slate-800 font-bold">C. H. Patil</strong> (Jan 2026)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Ashish Garud, Shankar Mali, <b>C. H. Patil</b> (Jan 2026)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer, SN Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1007/s42979-024-03497-7"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1007/s42979-024-03497-7" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        A Systematic Review on Human Action detection and
-                        classification Architectures using Deep Learning
-                        Methodology
+
+                  <!-- Pub 3 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A Systematic Review on Human Action detection and classification Architectures using Deep Learning Methodology
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mandar Parale, Shankar Mali, <strong class="text-slate-800 font-bold">C. H. Patil</strong> (Jan 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mandar Parale, Shankar Mali,
-                        <b>C. H. Patil</b>
-                        (Jan 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         MULTIMEDIA TOOLS AND APPLICATIONS
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="10.31803/tg-20240819123835"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.31803/tg-20240819123835" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Development of ColorEmoNet Dataset and Machine Learning
-                        Approach for Emotion Recognition using Colour Theory
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mayuri Bapat, Shankar Mali,
-                        <b>C. H. Patil</b>
-                        (OCT 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Engineering, Technology & Applied Science Research
-                        (ETASR)
-                      </p>
+
+                  <!-- Pub 4 -->
+                  <div class="pub-card journal-card q2-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200"
-                        >Q2</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.dib.2023.109743"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Development of ColorEmoNet Dataset and Machine Learning Approach for Emotion Recognition using Colour Theory
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-cyan-500"></span>
+                          Q2
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mayuri Bapat, Shankar Mali, <strong class="text-slate-800 font-bold">C. H. Patil</strong> (OCT 2025)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Engineering, Technology & Applied Science Research (ETASR)
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109743" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Crop type classification using Sentinel-2 images and
-                        AI-enabled methods for Precision Agriculture
+
+                  <!-- Pub 5 -->
+                  <div class="pub-card journal-card q2-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Crop type classification using Sentinel-2 images and AI-enabled methods for Precision Agriculture
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-cyan-500"></span>
+                          Q2
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Atiya Khan, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, Amol D. Vibhute, Shankar Mali (September 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Atiya Khan, <b>C.H. Patil</b>, Amol D. Vibhute, Shankar
-                        Mali (September 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer: Applied Geomatics
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200"
-                        >Q2</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.dib.2023.109743"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109743" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Development of Multimodal and Image Dataset for Emotion
-                        Classification and Detection
+
+                  <!-- Pub 6 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Development of Multimodal and Image Dataset for Emotion Classification and Detection
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mayuri Bapat, Shankar Mali, <strong class="text-slate-800 font-bold">C. H. Patil</strong> (June 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mayuri Bapat, Shankar Mali,
-                        <b>C. H. Patil</b>
-                        (June 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Science Publication, Journal of Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.dib.2023.109743"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109743" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        “SafeSeeds: A Novel Architecture and Analysis for Seed
-                        Distribution Ecosystem using Blockchain Technology”
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Nisha Kamble, <b>C. H. Patil</b>, Balaso Jagdale, S. M.
-                        Mali (May, 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        University of Bahrain, International Journal of
-                        Computing and Digital Systems
-                      </p>
+
+                  <!-- Pub 7 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="http://dx.doi.org/10.12785/ijcds/1601100"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
-                      <a
-                        aria-label="Download PDF"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://iiict.uob.edu.bh/IJCDS/papers/IJCDS1601100_1571013540.pdf"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined"
-                          >picture_as_pdf</span
-                        >
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          SafeSeeds: A Novel Architecture and Analysis for Seed Distribution Ecosystem using Blockchain Technology
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Nisha Kamble, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Balaso Jagdale, S. M. Mali (May, 2025)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        University of Bahrain, International Journal of Computing and Digital Systems
+                      </p>
+                      <div class="flex items-center gap-3 mt-2 flex-wrap">
+                        <a href="http://dx.doi.org/10.12785/ijcds/1601100" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                        <a href="https://iiict.uob.edu.bh/IJCDS/papers/IJCDS1601100_1571013540.pdf" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                          Download PDF
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Study of Gender-Specific Emotion Expressivity in Speech
-                        Using MFCC and CNN
+
+                  <!-- Pub 8 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Study of Gender-Specific Emotion Expressivity in Speech Using MFCC and CNN
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mayuri Bapat, Shankar Mali, <strong class="text-slate-800 font-bold">C. H. Patil</strong> (Jan 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mayuri Bapat, Shankar Mali,
-                        <b>C. H. Patil</b>
-                        (Jan 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Technical Journal
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="10.31803/tg-20240819123835"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.31803/tg-20240819123835" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        An Air-written real-time multilingual isolated numeral
-                        dataset development and recognition for commonly used
-                        twelve languages in India
+
+                  <!-- Pub 9 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          An Air-written real-time multilingual isolated numeral dataset development and recognition for commonly used twelve languages in India
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Meenal Jabde, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol Vibhute, Shankar Mali (Jan 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Meenal Jabde, <b>C. H. Patil</b>, Amol Vibhute, Shankar
-                        Mali (Jan 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Science Publication, Journal of Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.dib.2023.109743"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109743" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-              </details>
-              <details
-                class="flex flex-col border-t border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
-              >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2024-2025 (Q1-2, Q2-1, Q3-3)
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        A Systematic Review of Multilingual Numeral Recognition
-                        Using Machine and Deep Learning Methodology
+              </div>
+
+              <!-- Academic Year 2024-2025 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2024-2025</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A Systematic Review of Multilingual Numeral Recognition Using Machine and Deep Learning Methodology
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Meenal Jabde, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Jatinderkumar Saini (Jan 2025)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Meenal Jabde, <b>C. H. Patil</b>, Amol D. Vibhute,
-                        Jatinderkumar Saini (Jan 2025)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer: Artificial Intelligence Review
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="10.1007/s10462-025-11105-0"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1007/s10462-025-11105-0" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        COMPARISON OF AGRICULTURAL DROUGHT INDICES FOR
-                        AHMEDNAGAR REGION FOR A PERIOD OF 1990 To 2023
+
+                  <!-- Pub 2 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          COMPARISON OF AGRICULTURAL DROUGHT INDICES FOR AHMEDNAGAR REGION FOR A PERIOD OF 1990 To 2023
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Archana Mallapudi, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, Amol D. Vibhute, Shankar Mali (28 Nov 2024)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Archana Mallapudi, <b>C.H. Patil</b>, Amol D. Vibhute,
-                        Shankar Mali (28 Nov 2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer, SN Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://link.springer.com/article/10.1007/s42979-024-03497-7"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://link.springer.com/article/10.1007/s42979-024-03497-7" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Detecting Covid-19 from Chest X-Ray Images Using Machine
-                        Learning and Deep Convolutional Neural Networks
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Amol D. Vibhute, <b>C. H. Patil</b>, Jatinder kumar
-                        Saini, Harshali Patil (7 Sep 2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Indonesian Journal of Electrical Engineering and
-                        Computer Science (IJEECS)
-                      </p>
+
+                  <!-- Pub 3 -->
+                  <div class="pub-card journal-card q2-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200"
-                        >Q2</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://ijeecs.iaescore.com/index.php/IJEECS/article/view/35396"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Detecting Covid-19 from Chest X-Ray Images Using Machine Learning and Deep Convolutional Neural Networks
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-cyan-500"></span>
+                          Q2
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Amol D. Vibhute, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Jatinder kumar Saini, Harshali Patil (7 Sep 2024)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        Indonesian Journal of Electrical Engineering and Computer Science (IJEECS)
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://ijeecs.iaescore.com/index.php/IJEECS/article/view/35396" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        An air-written real-time multilingual numeral string
-                        recognition system using deep convolutional neural
-                        networks
+
+                  <!-- Pub 4 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          An air-written real-time multilingual numeral string recognition system using deep convolutional neural networks
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Meenal Jabde, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Shankar Mali (8 November 2024)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Meenal Jabde, <b>C. H. Patil</b>, Amol D. Vibhute,
-                        Shankar Mali (8 November 2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Science Publication, Journal of Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://thescipub.com/abstract/jcssp.2024.1712.1722"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://thescipub.com/abstract/jcssp.2024.1712.1722" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Database Development and Recognition of Facial
-                        Expression Using Deep Learning
+
+                  <!-- Pub 5 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Database Development and Recognition of Facial Expression Using Deep Learning
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Mayuri Bapat, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, S. M. Mali (31 Dec 2024)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Mayuri Bapat, <b>C.H. Patil</b>, S. M. Mali (31 Dec
-                        2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         International Journal of Computing
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="10.47839/ijc.23.4.3760"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.47839/ijc.23.4.3760" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Industrial IoT Sensor Data Federation in an Enterprise
-                        for an Early Failure Prediction
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Sachin Bhoite, <b>C.H. Patil</b>, Harshali Patil (19 Sep
-                        2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        University of Bahrain, International Journal of
-                        Computing and Digital Systems
-                      </p>
+
+                  <!-- Pub 6 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="http://dx.doi.org/10.12785/ijcds/1601100"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
-                      <a
-                        aria-label="Download PDF"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://iiict.uob.edu.bh/IJCDS/papers/IJCDS1601100_1571013540.pdf"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined"
-                          >picture_as_pdf</span
-                        >
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Industrial IoT Sensor Data Federation in an Enterprise for an Early Failure Prediction
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Sachin Bhoite, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, Harshali Patil (19 Sep 2024)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        University of Bahrain, International Journal of Computing and Digital Systems
+                      </p>
+                      <div class="flex items-center gap-3 mt-2 flex-wrap">
+                        <a href="http://dx.doi.org/10.12785/ijcds/1601100" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                        <a href="https://iiict.uob.edu.bh/IJCDS/papers/IJCDS1601100_1571013540.pdf" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                          Download PDF
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-              </details>
-              <details
-                class="flex flex-col border-t border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
-              >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2023-2024 (Q1-2, Q3-2)
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        An LSTM-based Novel Near-real-time Multiclass Network
-                        Intrusion Detection System for Complex Cloud
-                        Environments
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Amol D. Vibhute, Minhaj Khan, Anuradha Kanade,
-                        <b>C. H. Patil</b>, Sandeep Gaikwad, Kanu Pate (7 Jan
-                        2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        John Wiley and Sons Ltd, Concurrency and Computation:
-                        Practice and Experience
-                      </p>
+              </div>
+
+              <!-- Academic Year 2023-2024 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2023-2024</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://onlinelibrary.wiley.com/doi/epdf/10.1002/cpe.8024"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          An LSTM-based Novel Near-real-time Multiclass Network Intrusion Detection System for Complex Cloud Environments
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Amol D. Vibhute, Minhaj Khan, Anuradha Kanade, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Sandeep Gaikwad, Kanu Pate (7 Jan 2024)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        John Wiley and Sons Ltd, Concurrency and Computation: Practice and Experience
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://onlinelibrary.wiley.com/doi/epdf/10.1002/cpe.8024" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        An online multilingual numeral dataset on Devnagari and
-                        English languages for pattern recognition research
+
+                  <!-- Pub 2 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          An online multilingual numeral dataset on Devnagari and English languages for pattern recognition research
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Meenal Jabde, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Shankar Mali (26 Oct 2023)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Meenal Jabde, <b>C. H. Patil</b>, Amol D. Vibhute,
-                        Shankar Mali (26 Oct 2023)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Elsevier, Data in Brief
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.dib.2023.109743"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.dib.2023.109743" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Mapping crop types at a 10 m scale using Sentinel-2 data
-                        and machine learning methods
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Atiya Khan, <b>C.H. Patil</b>, Amol D. Vibhute, Shankar
-                        Mali (1 June 2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        University of Bahrain, International Journal of
-                        Computing and Digital Systems
-                      </p>
+
+                  <!-- Pub 3 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="http://dx.doi.org/10.12785/ijcds/1501123"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Mapping crop types at a 10 m scale using Sentinel-2 data and machine learning methods
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Atiya Khan, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, Amol D. Vibhute, Shankar Mali (1 June 2024)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        University of Bahrain, International Journal of Computing and Digital Systems
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="http://dx.doi.org/10.12785/ijcds/1501123" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        A comprehensive literature review on air-written online
-                        handwritten recognition
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Meenal Jabde, <b>C. H. Patil</b>, Amol D. Vibhute,
-                        Shankar Mali (6 Jan 2024)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        University of Bahrain, International Journal of
-                        Computing and Digital Systems
-                      </p>
+
+                  <!-- Pub 4 -->
+                  <div class="pub-card journal-card q3-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-orange-100 dark:bg-orange-900 px-2.5 py-0.5 text-xs font-medium text-orange-800 dark:text-orange-200"
-                        >Q3</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://journals.uob.edu.bh/handle/123456789/5339"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A comprehensive literature review on air-written online handwritten recognition
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-amber-500"></span>
+                          Q3
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Meenal Jabde, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Shankar Mali (6 Jan 2024)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        University of Bahrain, International Journal of Computing and Digital Systems
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://journals.uob.edu.bh/handle/123456789/5339" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-              </details>
-              <details
-                class="flex flex-col border-t border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
-              >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2022-2023 (Q1-1, Q2-1)
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Spatial and seasonal change detection in vegetation
-                        cover using time-series Landsat-9 satellite images and
-                        machine learning methods
+              </div>
+
+              <!-- Academic Year 2022-2023 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2022-2023</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Spatial and seasonal change detection in vegetation cover using time-series Landsat-9 satellite images and machine learning methods
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Archana Mallapudi, Amol D. Vibhute, Shankar Mali, <strong class="text-slate-800 font-bold">C.H. Patil</strong> (27 Jan 2023)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Archana Mallapudi, Amol D. Vibhute, Shankar Mali,
-                        <b>C.H. Patil</b> (27 Jan 2023)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer, SN Computer Science
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://link.springer.com/article/10.1007/s42979-023-01710-7"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://link.springer.com/article/10.1007/s42979-023-01710-7" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        A review of agricultural drought assessment with remote
-                        sensing data: methods, issues, challenges and
-                        opportunities
+
+                  <!-- Pub 2 -->
+                  <div class="pub-card journal-card q2-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A review of agricultural drought assessment with remote sensing data: methods, issues, challenges and opportunities
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-700 ring-1 ring-inset ring-cyan-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-cyan-500"></span>
+                          Q2
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Archana Mallapudi, Amol D. Vibhute, Shankar Mali, <strong class="text-slate-800 font-bold">C.H. Patil</strong> (14 Dec 2022)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Archana Mallapudi, Amol D. Vibhute, Shankar Mali,
-                        <b>C.H. Patil</b> (14 Dec 2022)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Springer: Applied Geomatics
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-yellow-100 dark:bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-800 dark:text-yellow-200"
-                        >Q2</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://link.springer.com/article/10.1007/s12518-022-00484-6"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://link.springer.com/article/10.1007/s12518-022-00484-6" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Towards Recognition of Degraded Printed Marathi
-                        Characters
+
+                  <!-- Pub 3 -->
+                  <div class="pub-card journal-card scopus-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Towards Recognition of Degraded Printed Marathi Characters
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-indigo-500"></span>
+                          SCOPUS
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Manojkumar Sonawane, Chitra Dhawale, <strong class="text-slate-800 font-bold">C.H. Patil</strong>, Sachin Bhoite (10 June 2023)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Manojkumar Sonawane, Chitra Dhawale,
-                        <b>C.H. Patil</b>, Sachin Bhoite (10 June 2023)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Gradiva Review Journal
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-900 px-2.5 py-0.5 text-xs font-medium text-slate-800 dark:text-slate-200"
-                        >SCOPUS</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://gradivareview.com/volume-9-issue-6-2023/"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://gradivareview.com/volume-9-issue-6-2023/" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-              </details>
-              <details
-                class="flex flex-col border-t border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
-              >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2021-2022 (Q1-1)
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        A systematic review on hyperspectral imaging technology
-                        with a machine and deep learning methodology for
-                        agricultural applications
+              </div>
+
+              <!-- Academic Year 2021-2022 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2021-2022</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card q1-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          A systematic review on hyperspectral imaging technology with a machine and deep learning methodology for agricultural applications
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                          Q1
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Atiya Khan, Amol D. Vibhute, Shankar Mali, <strong class="text-slate-800 font-bold">C.H. Patil</strong> (19 May 2022)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        Atiya Khan, Amol D. Vibhute, Shankar Mali,
-                        <b>C.H. Patil</b> (19 May 2022)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         Elsevier: Ecological Informatics
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-green-100 dark:bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:text-green-200"
-                        >Q1</span
-                      >
-                      <a
-                        aria-label="View DOI"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://doi.org/10.1016/j.ecoinf.2022.101678"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined">link</span>
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://doi.org/10.1016/j.ecoinf.2022.101678" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View DOI
+                        </a>
+                      </div>
                     </div>
                   </div>
+
                 </div>
-              </details>
-              <details
-                class="flex flex-col border-t border-b border-b-gray-200 dark:border-b-gray-700 border-t-gray-200 dark:border-t-gray-700 py-2 group"
-                open
-              >
-                <summary
-                  class="flex cursor-pointer items-center justify-between gap-6 py-3 list-none"
-                >
-                  <p
-                    class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                  >
-                    Academic Year 2014-2015
-                  </p>
-                  <div
-                    class="text-gray-900 dark:text-white transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <span class="material-symbols-outlined">expand_more</span>
-                  </div>
-                </summary>
-                <div class="flex flex-col gap-4 pt-2 pb-4">
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Recognition of Handwritten Marathi Vowels using Zone
-                        based Symmetric Density Features
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        <b>C. H. Patil</b> (2014)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        IJCA, NY, USA ISSN-0975-8887, Vol. 108 No. 4 December
-                        2014.
-                      </p>
+              </div>
+
+              <!-- Academic Year 2014-2015 -->
+              <div class="year-section flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Academic Year 2014-2015</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Pub 1 -->
+                  <div class="pub-card journal-card peer-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
                     </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-900 px-2.5 py-0.5 text-xs font-medium text-slate-800 dark:text-slate-200"
-                        >Peer Reviewed</span
-                      >
-                      <a
-                        aria-label="View PDF"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://research.ijcaonline.org/volume108/number4/pxc3900187.pdf"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined"
-                          >picture_as_pdf</span
-                        >
-                      </a>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Recognition of Handwritten Marathi Vowels using Zone based Symmetric Density Features
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-50 text-slate-700 ring-1 ring-inset ring-slate-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-slate-500"></span>
+                          Peer Reviewed
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800 font-bold">C. H. Patil</strong> (2014)
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        IJCA, NY, USA ISSN-0975-8887, Vol. 108 No. 4 December 2014.
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://research.ijcaonline.org/volume108/number4/pxc3900187.pdf" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                          Download PDF
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div
-                    class="flex flex-col sm:flex-row gap-4 py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-                  >
-                    <div class="flex flex-1 flex-col justify-center gap-1">
-                      <p
-                        class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                      >
-                        Recognition of Handwritten Marathi Vowels using
-                        Combination of Topological and Statistical Features
+
+                  <!-- Pub 2 -->
+                  <div class="pub-card journal-card peer-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Recognition of Handwritten Marathi Vowels using Combination of Topological and Statistical Features
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-50 text-slate-700 ring-1 ring-inset ring-slate-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-slate-500"></span>
+                          Peer Reviewed
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        <strong class="text-slate-800 font-bold">C. H. Patil</strong> (2014)
                       </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
-                        <b>C. H. Patil</b> (2014)
-                      </p>
-                      <p
-                        class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                      >
+                      <p class="text-slate-500 text-sm font-medium">
                         IJERT ISSN-2278-0181, Vol. 3 Issue 11 November 2014.
                       </p>
-                    </div>
-                    <div class="flex items-center gap-2 shrink-0">
-                      <span
-                        class="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-900 px-2.5 py-0.5 text-xs font-medium text-slate-800 dark:text-slate-200"
-                        >Peer Reviewed</span
-                      >
-                      <a
-                        aria-label="View PDF"
-                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 transition-colors"
-                        href="https://www.ijert.org/research/recognition-of-handwritten-marathi-vowels-using-combination-of-topological-and-statistical-features-IJERTV3IS110775.pdf"
-                        target="_blank"
-                      >
-                        <span class="material-symbols-outlined"
-                          >picture_as_pdf</span
-                        >
-                      </a>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://www.ijert.org/research/recognition-of-handwritten-marathi-vowels-using-combination-of-topological-and-statistical-features-IJERTV3IS110775.pdf" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800 transition-colors bg-emerald-50 hover:bg-emerald-100 px-3 py-1.5 rounded-lg border border-emerald-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                          Download PDF
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </details>
-            </div>
-            <hr class="border-gray-200 dark:border-gray-700 mx-4 my-8" />
-            <h2
-              class="text-gray-900 dark:text-white text-[20px] sm:text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"
-            >
-              Book Chapter Publications (Total 2)
-            </h2>
-            <div class="flex flex-col gap-4 p-4">
-              <div
-                class="flex gap-4 bg-transparent py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-              >
-                <div class="flex items-start gap-4 w-full">
-                  <div
-                    class="text-gray-900 dark:text-white flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 size-12"
-                  >
-                    <span class="material-symbols-outlined">book</span>
-                  </div>
-                  <div class="flex flex-1 flex-col justify-center">
-                    <p
-                      class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                    >
-                      “Application of Image Processing and Machine Learning
-                      Techniques for Vegetation Cover Classification in
-                      Precision Agriculture”
-                    </p>
-                    <p
-                      class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                    >
-                      In: IOP book “Image processing with Python: Vol2 A
-                      practical approach (July 2024)
-                    </p>
-                    <p
-                      class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                    >
-                      Atiya Khan, <b>C. H. Patil</b>, Amol D. Vibhute, Shankar
-                      Mali
-                    </p>
-                  </div>
-                  <div class="shrink-0">
-                    <a
-                      class="text-primary hover:underline text-sm font-medium leading-normal"
-                      href="https://iopscience.iop.org/book/edit/978-0-7503-5924-5"
-                      target="_blank"
-                      >View Chapter</a
-                    >
-                  </div>
+
                 </div>
               </div>
-              <div
-                class="flex gap-4 bg-transparent py-3 justify-between border-t border-gray-200 dark:border-gray-700"
-              >
-                <div class="flex items-start gap-4 w-full">
-                  <div
-                    class="text-gray-900 dark:text-white flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 shrink-0 size-12"
-                  >
-                    <span class="material-symbols-outlined">book</span>
+
+              <!-- Book Chapters Section -->
+              <div id="book-chapter-section" class="flex flex-col gap-4">
+                <h2 class="text-slate-900 text-xl font-bold tracking-tight border-b border-slate-200 pb-2">Book Chapters</h2>
+                <div class="grid grid-cols-1 gap-4">
+                  
+                  <!-- Chapter 1 -->
+                  <div class="pub-card book-chapter-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Application of Image Processing and Machine Learning Techniques for Vegetation Cover Classification in Precision Agriculture
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-indigo-500"></span>
+                          Book Chapter
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Atiya Khan, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Shankar Mali
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        In: IOP book “Image processing with Python: Vol2 A practical approach (July 2024)
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://iopscience.iop.org/book/edit/978-0-7503-5924-5" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View Chapter
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div class="flex flex-1 flex-col justify-center">
-                    <p
-                      class="text-gray-900 dark:text-white text-base font-medium leading-normal"
-                    >
-                      “Revolutionizing Agriculture with Intelligent Vision and
-                      High Performance Computing: Advancements and Future
-                      Prospects”
-                    </p>
-                    <p
-                      class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                    >
-                      In: PARALLEL AND HIGH-PERFORMANCE COMPUTING IN ARTIFICIAL
-                      INTELLIGENCE, Taylor and Francis Publisher (November,
-                      2023)
-                    </p>
-                    <p
-                      class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal"
-                    >
-                      Atiya Khan, <b>C. H. Patil</b>, Amol D. Vibhute, Shankar
-                      Mali
-                    </p>
+
+                  <!-- Chapter 2 -->
+                  <div class="pub-card book-chapter-card group relative flex flex-col sm:flex-row gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-[#1980e6] hover:shadow-lg transition-all duration-300">
+                    <div class="bg-blue-50 text-[#1980e6] p-4 rounded-xl size-14 flex items-center justify-center shrink-0 group-hover:bg-[#1980e6] group-hover:text-white transition-colors duration-300">
+                      <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-2">
+                      <div class="flex flex-wrap items-start justify-between gap-2">
+                        <h3 class="text-slate-900 font-bold text-base sm:text-lg leading-snug">
+                          Revolutionizing Agriculture with Intelligent Vision and High Performance Computing: Advancements and Future Prospects
+                        </h3>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-600/20 shrink-0">
+                          <span class="size-1.5 rounded-full bg-indigo-500"></span>
+                          Book Chapter
+                        </span>
+                      </div>
+                      <p class="text-slate-600 text-sm leading-relaxed">
+                        Atiya Khan, <strong class="text-slate-800 font-bold">C. H. Patil</strong>, Amol D. Vibhute, Shankar Mali
+                      </p>
+                      <p class="text-slate-500 text-sm font-medium">
+                        In: PARALLEL AND HIGH-PERFORMANCE COMPUTING IN ARTIFICIAL INTELLIGENCE, Taylor and Francis Publisher (November, 2023)
+                      </p>
+                      <div class="flex items-center gap-2 mt-2">
+                        <a href="https://link.springer.com/chapter/10.1007/978-981-97-9839-1_7" target="_blank" class="inline-flex items-center gap-1 text-xs font-bold text-[#1980e6] hover:text-[#0f5ec1] transition-colors bg-blue-50/50 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-100">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          View Chapter
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div class="shrink-0">
-                    <a
-                      class="text-primary hover:underline text-sm font-medium leading-normal"
-                      href="https://link.springer.com/chapter/10.1007/978-981-97-9839-1_7"
-                      target="_blank"
-                      >View Chapter</a
-                    >
-                  </div>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
