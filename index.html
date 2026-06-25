@@ -543,8 +543,7 @@
               </svg>
             </button>
 
-            <!-- Indicator Dots -->
-            <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20"></div>
+
           </div>
         </section>
       </main>
@@ -553,6 +552,20 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const imageList = [
+          "1.jpeg",
+          "2.jpeg",
+          "3.jpeg",
+          "4.jpeg",
+          "5.jpeg",
+          "6.jpeg",
+          "7.jpeg",
+          "8.jpeg",
+          "9.jpeg",
+          "10.jpeg",
+          "1760250687896.jpeg",
+          "20250924_110942AMByGPSMapCamera.jpg",
+          "20250924_11215PMByGPSMapCamera.jpg",
+          "Screenshot 2026-06-25 160401.png",
           "WhatsApp Image 2026-06-24 at 2.00.41 PM.jpeg",
           "WhatsApp Image 2026-06-24 at 2.00.41 PM (1).jpeg",
           "WhatsApp Image 2026-06-24 at 2.00.41 PM (2).jpeg",
@@ -577,11 +590,29 @@
           "WhatsApp Image 2026-06-24 at 3.59.02 PM.jpeg",
           "WhatsApp Image 2026-06-24 at 3.59.03 PM.jpeg",
           "WhatsApp Image 2026-06-24 at 3.59.03 PM (1).jpeg",
-          "WhatsApp Image 2026-06-24 at 3.59.03 PM (2).jpeg"
+          "WhatsApp Image 2026-06-24 at 3.59.03 PM (2).jpeg",
+          "WhatsApp Image 2026-06-25 at 9.35.31 AM.jpeg",
+          "WhatsApp Image 2026-06-25 at 9.38.46 AM.jpeg",
+          "WhatsApp Image 2026-06-25 at 9.56.38 AM.jpeg",
+          "WhatsApp Image 2026-06-25 at 9.56.39 AM.jpeg",
+          "WhatsApp Image 2026-06-25 at 9.58.57 AM.jpeg",
+          "WhatsApp Image 2026-06-25 at 12.30.53 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 12.31.25 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 12.32.03 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 12.33.13 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 12.33.45 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.24 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.26 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.31 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.32 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.33 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.35 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.36 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 1.55.38 PM.jpeg",
+          "WhatsApp Image 2026-06-25 at 4.20.56 PM.jpeg"
         ];
 
         const track = document.getElementById("carousel-track");
-        const dotsContainer = document.getElementById("carousel-dots");
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
         const carousel = document.getElementById("homepage-carousel");
@@ -599,31 +630,17 @@
           
           slideDiv.appendChild(img);
           track.appendChild(slideDiv);
-
-          // Create dot
-          const dot = document.createElement("button");
-          dot.type = "button";
-          dot.className = `size-2.5 rounded-full transition-all duration-300 focus:outline-none ${
-            index === 0 ? "bg-white scale-125 shadow-md" : "bg-white/40 hover:bg-white/70"
-          }`;
-          dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-          dotsContainer.appendChild(dot);
         });
 
         const slides = track.querySelectorAll(".carousel-slide");
-        const dots = dotsContainer.querySelectorAll("button");
         
         let currentIndex = 0;
         let slideInterval;
         const intervalTime = 4000;
 
         function goToSlide(index) {
-          dots[currentIndex].className = "size-2.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 focus:outline-none";
-          
           currentIndex = (index + slides.length) % slides.length;
-          
           track.style.transform = `translateX(-${currentIndex * 100}%)`;
-          dots[currentIndex].className = "size-2.5 rounded-full bg-white scale-125 shadow-md transition-all duration-300 focus:outline-none";
         }
 
         function nextSlide() {
@@ -643,12 +660,7 @@
           startInterval();
         }
 
-        dots.forEach((dot, index) => {
-          dot.addEventListener("click", () => {
-            goToSlide(index);
-            resetInterval();
-          });
-        });
+
 
         prevBtn.addEventListener("click", () => {
           prevSlide();
